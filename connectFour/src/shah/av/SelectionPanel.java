@@ -2,6 +2,7 @@ package shah.av;
 
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class SelectionPanel extends JPanel {
 
 	public SelectionPanel() {
@@ -9,6 +10,7 @@ public class SelectionPanel extends JPanel {
 		Object options[] = { "Single Player", "Multiplayer", "Cancel" };
 
 		int selection = 2;
+		
 		while (selection == 2) {
 
 			selection = JOptionPane.showOptionDialog(null, "Welcome! How would you like to play?", "CONNECT FOUR",

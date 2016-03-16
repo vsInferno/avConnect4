@@ -6,18 +6,21 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class ConnectFourPanel extends JPanel {
 
 	final int ROWS = 7;
 	final int COLS = 7;
 
-	Chip redChip;
-	Chip blueChip;
+	Chip chip1;
+	Chip chip2;
+
+	ImageIcon oneChip;
+	ImageIcon twoChip;
 
 	int x;
 	int y;
@@ -35,6 +38,9 @@ public class ConnectFourPanel extends JPanel {
 
 	private Color blue = Color.BLUE;
 	private Color red = Color.RED;
+	private Color pink = Color.pink;
+	private Color cyan = Color.cyan;
+
 	private JButton[][] button = new JButton[ROWS][COLS];
 
 	JButton btnOne;
@@ -45,8 +51,6 @@ public class ConnectFourPanel extends JPanel {
 	JButton btnSix;
 	JButton btnSeven;
 
-	Graphics g;
-
 	Border thickBorder;
 
 	public ConnectFourPanel() {
@@ -56,6 +60,11 @@ public class ConnectFourPanel extends JPanel {
 		setBackground(Color.YELLOW);
 
 		setLayout(new GridLayout(7, 7));
+
+		chip1 = new Chip(red);
+		oneChip = chipIm("red");
+		chip2 = new Chip(blue);
+		twoChip = chipIm("blue");
 
 		thickBorder = new LineBorder(Color.WHITE, 4);
 
@@ -132,7 +141,7 @@ public class ConnectFourPanel extends JPanel {
 
 			} else {
 
-				JOptionPane.showMessageDialog(null, name1 + " will be blue. Blue goes first.");
+				JOptionPane.showMessageDialog(null, name1 + " will be pink. Pink goes first.");
 				valid = false;
 
 			}
@@ -150,7 +159,7 @@ public class ConnectFourPanel extends JPanel {
 
 			} else {
 
-				JOptionPane.showMessageDialog(null, name2 + " will be red. Red goes second.");
+				JOptionPane.showMessageDialog(null, name2 + " will be cyan. Cyan goes second.");
 				valid = false;
 
 			}
@@ -175,7 +184,7 @@ public class ConnectFourPanel extends JPanel {
 
 					if (j < 4) {
 
-						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+						if ((button[i][j].getBackground() == pink || button[i][j].getBackground() == cyan)
 								&& button[i][j].getBackground() == button[i][j + 1].getBackground()
 								&& button[i][j].getBackground() == button[i][j + 2].getBackground()
 								&& button[i][j].getBackground() == button[i][j + 3].getBackground()) {
@@ -190,7 +199,7 @@ public class ConnectFourPanel extends JPanel {
 
 					if (i > 3) {
 
-						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+						if ((button[i][j].getBackground() == pink || button[i][j].getBackground() == cyan)
 								&& button[i][j].getBackground() == button[i - 1][j].getBackground()
 								&& button[i][j].getBackground() == button[i - 2][j].getBackground()
 								&& button[i][j].getBackground() == button[i - 3][j].getBackground()) {
@@ -205,7 +214,7 @@ public class ConnectFourPanel extends JPanel {
 
 					if (i > 3 && j < 4) {
 
-						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+						if ((button[i][j].getBackground() == pink || button[i][j].getBackground() == cyan)
 								&& button[i][j].getBackground() == button[i - 1][j + 1].getBackground()
 								&& button[i][j].getBackground() == button[i - 2][j + 2].getBackground()
 								&& button[i][j].getBackground() == button[i - 3][j + 3].getBackground()) {
@@ -220,7 +229,7 @@ public class ConnectFourPanel extends JPanel {
 
 					if (i > 3 && j > 2) {
 
-						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+						if ((button[i][j].getBackground() == pink || button[i][j].getBackground() == cyan)
 								&& button[i][j].getBackground() == button[i - 1][j - 1].getBackground()
 								&& button[i][j].getBackground() == button[i - 2][j - 2].getBackground()
 								&& button[i][j].getBackground() == button[i - 3][j - 3].getBackground()) {
@@ -258,15 +267,23 @@ public class ConnectFourPanel extends JPanel {
 
 	}
 
+	private ImageIcon chipIm(String color) {
+
+		ImageIcon chipImg = new ImageIcon(color + ".png");
+
+		return chipImg;
+
+	}
+
 	private void declareWinner(int i, int j) {
 
 		Color color = button[i][j].getBackground();
 
-		if (color == blue) {
+		if (color == pink) {
 
 			JOptionPane.showMessageDialog(null, name1 + " wins!");
 
-		} else if (color == red) {
+		} else if (color == cyan) {
 
 			JOptionPane.showMessageDialog(null, name2 + " wins!");
 
@@ -312,8 +329,9 @@ public class ConnectFourPanel extends JPanel {
 			if (event.getSource() == btnOne && one != 0) {
 
 				if (count % 2 == 0 && one > 1) {
-
-					(button[one][0]).setBackground(blue);
+					(button[one][0]).setBackground(Color.pink);
+					(button[one][0]).setDisabledIcon(oneChip);
+					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
 					one--;
 					count++;
 
@@ -324,8 +342,9 @@ public class ConnectFourPanel extends JPanel {
 					}
 
 				} else if (count % 2 != 0 && one > 1) {
-
-					(button[one][0]).setBackground(red);
+					(button[one][0]).setBackground(Color.cyan);
+					(button[one][0]).setDisabledIcon(twoChip);
+					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
 					one--;
 					count++;
 
@@ -336,8 +355,9 @@ public class ConnectFourPanel extends JPanel {
 					}
 
 				} else if (count % 2 == 0 && one == 1) {
-
-					(button[one][0]).setBackground(blue);
+					(button[one][0]).setBackground(Color.pink);
+					(button[one][0]).setDisabledIcon(oneChip);
+					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
 					count++;
 					btnOne.setEnabled(false);
 					btnOne.setBackground(Color.WHITE);
@@ -349,8 +369,9 @@ public class ConnectFourPanel extends JPanel {
 					}
 
 				} else if (count % 2 != 0 && one == 1) {
-
-					(button[one][0]).setBackground(red);
+					(button[one][0]).setBackground(Color.cyan);
+					(button[one][0]).setDisabledIcon(twoChip);
+					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
 					count++;
 					btnOne.setEnabled(false);
 					btnOne.setBackground(Color.WHITE);
@@ -366,8 +387,9 @@ public class ConnectFourPanel extends JPanel {
 			} else if (event.getSource() == btnTwo && two != 0) {
 
 				if (count % 2 == 0 && two > 1) {
-
-					(button[two][1]).setBackground(blue);
+					(button[two][1]).setBackground(Color.pink);
+					(button[two][1]).setDisabledIcon(oneChip);
+					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
 					two--;
 					count++;
 
@@ -378,8 +400,9 @@ public class ConnectFourPanel extends JPanel {
 					}
 
 				} else if (count % 2 != 0 && two > 1) {
-
-					(button[two][1]).setBackground(red);
+					(button[two][1]).setBackground(Color.cyan);
+					(button[two][1]).setDisabledIcon(twoChip);
+					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
 					two--;
 					count++;
 
@@ -391,7 +414,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 == 0 && two == 1) {
 
-					(button[two][1]).setBackground(blue);
+					(button[two][1]).setBackground(Color.pink);
+					(button[two][1]).setDisabledIcon(oneChip);
+					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
 					count++;
 					btnTwo.setEnabled(false);
 					btnTwo.setBackground(Color.WHITE);
@@ -404,7 +429,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && two == 1) {
 
-					(button[two][1]).setBackground(red);
+					(button[two][1]).setBackground(Color.cyan);
+					(button[two][1]).setDisabledIcon(twoChip);
+					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
 					count++;
 					btnTwo.setEnabled(false);
 					btnTwo.setBackground(Color.WHITE);
@@ -421,7 +448,9 @@ public class ConnectFourPanel extends JPanel {
 
 				if (count % 2 == 0 && three > 1) {
 
-					(button[three][2]).setBackground(blue);
+					(button[three][2]).setBackground(Color.pink);
+					(button[three][2]).setDisabledIcon(oneChip);
+					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
 					three--;
 					count++;
 
@@ -433,7 +462,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && three > 1) {
 
-					(button[three][2]).setBackground(red);
+					(button[three][2]).setBackground(Color.cyan);
+					(button[three][2]).setDisabledIcon(twoChip);
+					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
 					three--;
 					count++;
 
@@ -445,7 +476,10 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 == 0 && three == 1) {
 
-					(button[three][2]).setBackground(blue);
+					(button[three][2]).setBackground(Color.pink);
+					(button[three][2]).setDisabledIcon(oneChip);
+					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
+
 					count++;
 					btnThree.setEnabled(false);
 					btnThree.setBackground(Color.WHITE);
@@ -458,7 +492,10 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && three == 1) {
 
-					(button[three][2]).setBackground(red);
+					(button[three][2]).setBackground(Color.cyan);
+					(button[three][2]).setDisabledIcon(twoChip);
+					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
+
 					count++;
 					btnThree.setEnabled(false);
 					btnThree.setBackground(Color.WHITE);
@@ -475,7 +512,9 @@ public class ConnectFourPanel extends JPanel {
 
 				if (count % 2 == 0 && four > 1) {
 
-					(button[four][3]).setBackground(blue);
+					(button[four][3]).setBackground(Color.pink);
+					(button[four][3]).setDisabledIcon(oneChip);
+					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
 					four--;
 					count++;
 
@@ -487,7 +526,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && four > 1) {
 
-					(button[four][3]).setBackground(red);
+					(button[four][3]).setBackground(Color.cyan);
+					(button[four][3]).setDisabledIcon(twoChip);
+					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
 					four--;
 					count++;
 
@@ -499,7 +540,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 == 0 && four == 1) {
 
-					(button[four][3]).setBackground(blue);
+					(button[four][3]).setBackground(Color.pink);
+					(button[four][3]).setDisabledIcon(oneChip);
+					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
 					count++;
 					btnFour.setEnabled(false);
 					btnFour.setBackground(Color.WHITE);
@@ -512,7 +555,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && four == 1) {
 
-					(button[four][3]).setBackground(red);
+					(button[four][3]).setBackground(Color.cyan);
+					(button[four][3]).setDisabledIcon(twoChip);
+					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
 					count++;
 					btnFour.setEnabled(false);
 					btnFour.setBackground(Color.WHITE);
@@ -529,7 +574,9 @@ public class ConnectFourPanel extends JPanel {
 
 				if (count % 2 == 0 && five > 1) {
 
-					(button[five][4]).setBackground(blue);
+					(button[five][4]).setBackground(Color.pink);
+					(button[five][4]).setDisabledIcon(oneChip);
+					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
 					five--;
 					count++;
 
@@ -541,7 +588,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && five > 1) {
 
-					(button[five][4]).setBackground(red);
+					(button[five][4]).setBackground(Color.cyan);
+					(button[five][4]).setDisabledIcon(twoChip);
+					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
 					five--;
 					count++;
 
@@ -553,7 +602,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 == 0 && five == 1) {
 
-					(button[five][4]).setBackground(blue);
+					(button[five][4]).setBackground(Color.pink);
+					(button[five][4]).setDisabledIcon(oneChip);
+					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
 					count++;
 					btnFive.setEnabled(false);
 					btnFive.setBackground(Color.WHITE);
@@ -566,7 +617,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && five == 1) {
 
-					(button[five][4]).setBackground(red);
+					(button[five][4]).setBackground(Color.cyan);
+					(button[five][4]).setDisabledIcon(twoChip);
+					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
 					count++;
 					btnFive.setEnabled(false);
 					btnFive.setBackground(Color.WHITE);
@@ -583,7 +636,9 @@ public class ConnectFourPanel extends JPanel {
 
 				if (count % 2 == 0 && six > 1) {
 
-					(button[six][5]).setBackground(blue);
+					(button[six][5]).setBackground(Color.pink);
+					(button[six][5]).setDisabledIcon(oneChip);
+					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
 					six--;
 					count++;
 
@@ -595,7 +650,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && six > 1) {
 
-					(button[six][5]).setBackground(red);
+					(button[six][5]).setBackground(Color.cyan);
+					(button[six][5]).setDisabledIcon(twoChip);
+					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
 					six--;
 					count++;
 
@@ -607,7 +664,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 == 0 && six == 1) {
 
-					(button[six][5]).setBackground(blue);
+					(button[six][5]).setBackground(Color.pink);
+					(button[six][5]).setDisabledIcon(oneChip);
+					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
 					count++;
 					btnSix.setEnabled(false);
 					btnSix.setBackground(Color.WHITE);
@@ -620,7 +679,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && six == 1) {
 
-					(button[six][5]).setBackground(red);
+					(button[six][5]).setBackground(Color.cyan);
+					(button[six][5]).setDisabledIcon(twoChip);
+					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
 					count++;
 					btnSix.setEnabled(false);
 					btnSix.setBackground(Color.WHITE);
@@ -637,7 +698,9 @@ public class ConnectFourPanel extends JPanel {
 
 				if (count % 2 == 0 && seven > 1) {
 
-					(button[seven][6]).setBackground(blue);
+					(button[seven][6]).setBackground(Color.pink);
+					(button[seven][6]).setDisabledIcon(oneChip);
+					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
 					seven--;
 					count++;
 
@@ -649,7 +712,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && seven > 1) {
 
-					(button[seven][6]).setBackground(red);
+					(button[seven][6]).setBackground(Color.cyan);
+					(button[seven][6]).setDisabledIcon(twoChip);
+					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
 					seven--;
 					count++;
 
@@ -661,7 +726,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 == 0 && seven == 1) {
 
-					(button[seven][6]).setBackground(blue);
+					(button[seven][6]).setBackground(Color.pink);
+					(button[seven][6]).setDisabledIcon(oneChip);
+					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
 					count++;
 					btnSeven.setEnabled(false);
 					btnSeven.setBackground(Color.WHITE);
@@ -674,7 +741,9 @@ public class ConnectFourPanel extends JPanel {
 
 				} else if (count % 2 != 0 && seven == 1) {
 
-					(button[seven][6]).setBackground(red);
+					(button[seven][6]).setBackground(Color.cyan);
+					(button[seven][6]).setDisabledIcon(twoChip);
+					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
 					count++;
 					btnSeven.setEnabled(false);
 					btnSeven.setBackground(Color.WHITE);
@@ -692,4 +761,5 @@ public class ConnectFourPanel extends JPanel {
 		}
 
 	}
+
 }
