@@ -8,9 +8,9 @@ public class ConnectFourGUIDriver {
 
 		JFrame frame = new JFrame("Connect Four");
 		frame.setSize(900, 900);
-		frame.getContentPane().add(new ConnectFourPanel());
+		frame.getContentPane().add(new SelectionPanel());
 		frame.pack();
-		frame.setVisible(true);
+		frame.setVisible(false);
 		frame.setFocusable(false);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,9 @@ public class ConnectFourPanel extends JPanel {
 	int seven;
 	int count;
 
+	String name1;
+	String name2;
+
 	private Color blue = Color.BLUE;
 	private Color red = Color.RED;
 	private JButton[][] button = new JButton[ROWS][COLS];
@@ -40,7 +44,6 @@ public class ConnectFourPanel extends JPanel {
 	JButton btnFive;
 	JButton btnSix;
 	JButton btnSeven;
-	JLabel lblOne;
 
 	Graphics g;
 
@@ -117,6 +120,42 @@ public class ConnectFourPanel extends JPanel {
 		btnSeven = button[0][6];
 		btnSeven.setBackground(Color.BLACK);
 		btnSeven.setBorder(thickBorder);
+
+		boolean valid = true;
+
+		while (valid) {
+
+			name1 = JOptionPane.showInputDialog(null, "Name of Player 1: ");
+			if (name1 == null || name1.equals("")) {
+
+				JOptionPane.showMessageDialog(null, "No name entered.");
+
+			} else {
+
+				JOptionPane.showMessageDialog(null, name1 + " will be blue. Blue goes first.");
+				valid = false;
+
+			}
+
+		}
+
+		valid = true;
+
+		while (valid) {
+
+			name2 = JOptionPane.showInputDialog(null, "Name of Player 2: ");
+			if (name2 == null || name2.equals("")) {
+
+				JOptionPane.showMessageDialog(null, "No name entered.");
+
+			} else {
+
+				JOptionPane.showMessageDialog(null, name2 + " will be red. Red goes second.");
+				valid = false;
+
+			}
+
+		}
 
 	}
 
@@ -225,11 +264,11 @@ public class ConnectFourPanel extends JPanel {
 
 		if (color == blue) {
 
-			JOptionPane.showMessageDialog(null, "Blue wins!");
+			JOptionPane.showMessageDialog(null, name1 + " wins!");
 
 		} else if (color == red) {
 
-			JOptionPane.showMessageDialog(null, "Red wins!");
+			JOptionPane.showMessageDialog(null, name2 + " wins!");
 
 		}
 
@@ -238,12 +277,31 @@ public class ConnectFourPanel extends JPanel {
 	public void updateBoard() {
 
 		btnOne.setEnabled(false);
+		btnOne.setBackground(Color.WHITE);
+		btnOne.setText("T");
+		btnOne.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 		btnTwo.setEnabled(false);
+		btnTwo.setBackground(Color.WHITE);
+		btnTwo.setText("H");
+		btnTwo.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 		btnThree.setEnabled(false);
+		btnThree.setBackground(Color.WHITE);
+		btnThree.setText("E");
+		btnThree.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 		btnFour.setEnabled(false);
+		btnFour.setBackground(Color.WHITE);
 		btnFive.setEnabled(false);
+		btnFive.setBackground(Color.WHITE);
+		btnFive.setText("E");
+		btnFive.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 		btnSix.setEnabled(false);
+		btnSix.setBackground(Color.WHITE);
+		btnSix.setText("N");
+		btnSix.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 		btnSeven.setEnabled(false);
+		btnSeven.setBackground(Color.WHITE);
+		btnSeven.setText("D");
+		btnSeven.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 
 	}
 
