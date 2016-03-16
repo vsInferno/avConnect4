@@ -1,6 +1,8 @@
 package shah.av;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -42,6 +44,8 @@ public class ConnectFourPanel extends JPanel {
 
 	Graphics g;
 
+	Border thickBorder;
+
 	public ConnectFourPanel() {
 
 		setPreferredSize(new Dimension(600, 500));
@@ -49,6 +53,8 @@ public class ConnectFourPanel extends JPanel {
 		setBackground(Color.YELLOW);
 
 		setLayout(new GridLayout(7, 7));
+
+		thickBorder = new LineBorder(Color.WHITE, 4);
 
 		for (int i = 0; i < ROWS; i++) {
 
@@ -65,6 +71,8 @@ public class ConnectFourPanel extends JPanel {
 
 					button[i][j] = new JButton();
 					button[i][j].setEnabled(false);
+					button[i][j].setBackground(Color.YELLOW);
+					button[i][j].setBorder(thickBorder);
 					add(button[i][j]);
 
 				}
@@ -83,18 +91,32 @@ public class ConnectFourPanel extends JPanel {
 		count = 0;
 
 		btnOne = button[0][0];
+		btnOne.setBackground(Color.BLACK);
+		btnOne.setBorder(thickBorder);
 
 		btnTwo = button[0][1];
+		btnTwo.setBackground(Color.BLACK);
+		btnTwo.setBorder(thickBorder);
 
 		btnThree = button[0][2];
+		btnThree.setBackground(Color.BLACK);
+		btnThree.setBorder(thickBorder);
 
 		btnFour = button[0][3];
+		btnFour.setBackground(Color.BLACK);
+		btnFour.setBorder(thickBorder);
 
 		btnFive = button[0][4];
+		btnFive.setBackground(Color.BLACK);
+		btnFive.setBorder(thickBorder);
 
 		btnSix = button[0][5];
+		btnSix.setBackground(Color.BLACK);
+		btnSix.setBorder(thickBorder);
 
 		btnSeven = button[0][6];
+		btnSeven.setBackground(Color.BLACK);
+		btnSeven.setBorder(thickBorder);
 
 	}
 
@@ -102,68 +124,75 @@ public class ConnectFourPanel extends JPanel {
 
 		boolean win = false;
 
-		for (int i = ROWS - 1; i > 0; i--) {
+		if (isDraw()) {
 
-			for (int j = 0; j < COLS; j++) {
+			JOptionPane.showMessageDialog(null, "It's a draw!");
 
-				if (j < 4) {
+		} else {
 
-					if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
-							&& button[i][j].getBackground() == button[i][j + 1].getBackground()
-							&& button[i][j].getBackground() == button[i][j + 2].getBackground()
-							&& button[i][j].getBackground() == button[i][j + 3].getBackground()) {
+			for (int i = ROWS - 1; i > 0; i--) {
 
-						win = true;
-						declareWinner(i, j);
-						return win;
+				for (int j = 0; j < COLS; j++) {
 
-					}
+					if (j < 4) {
 
-				}
+						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+								&& button[i][j].getBackground() == button[i][j + 1].getBackground()
+								&& button[i][j].getBackground() == button[i][j + 2].getBackground()
+								&& button[i][j].getBackground() == button[i][j + 3].getBackground()) {
 
-				if (i > 3) {
+							win = true;
+							declareWinner(i, j);
+							return win;
 
-					if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
-							&& button[i][j].getBackground() == button[i - 1][j].getBackground()
-							&& button[i][j].getBackground() == button[i - 2][j].getBackground()
-							&& button[i][j].getBackground() == button[i - 3][j].getBackground()) {
-
-						win = true;
-						declareWinner(i, j);
-						return win;
+						}
 
 					}
 
-				}
+					if (i > 3) {
 
-				if (i > 3 && j < 4) {
+						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+								&& button[i][j].getBackground() == button[i - 1][j].getBackground()
+								&& button[i][j].getBackground() == button[i - 2][j].getBackground()
+								&& button[i][j].getBackground() == button[i - 3][j].getBackground()) {
 
-					if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
-							&& button[i][j].getBackground() == button[i - 1][j + 1].getBackground()
-							&& button[i][j].getBackground() == button[i - 2][j + 2].getBackground()
-							&& button[i][j].getBackground() == button[i - 3][j + 3].getBackground()) {
+							win = true;
+							declareWinner(i, j);
+							return win;
 
-						win = true;
-						declareWinner(i, j);
-						return win;
-
-					}
-
-				}
-
-				if (i > 3 && j > 2) {
-
-					if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
-							&& button[i][j].getBackground() == button[i - 1][j - 1].getBackground()
-							&& button[i][j].getBackground() == button[i - 2][j - 2].getBackground()
-							&& button[i][j].getBackground() == button[i - 3][j - 3].getBackground()) {
-
-						win = true;
-						declareWinner(i, j);
-						return win;
+						}
 
 					}
 
+					if (i > 3 && j < 4) {
+
+						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+								&& button[i][j].getBackground() == button[i - 1][j + 1].getBackground()
+								&& button[i][j].getBackground() == button[i - 2][j + 2].getBackground()
+								&& button[i][j].getBackground() == button[i - 3][j + 3].getBackground()) {
+
+							win = true;
+							declareWinner(i, j);
+							return win;
+
+						}
+
+					}
+
+					if (i > 3 && j > 2) {
+
+						if ((button[i][j].getBackground() == red || button[i][j].getBackground() == blue)
+								&& button[i][j].getBackground() == button[i - 1][j - 1].getBackground()
+								&& button[i][j].getBackground() == button[i - 2][j - 2].getBackground()
+								&& button[i][j].getBackground() == button[i - 3][j - 3].getBackground()) {
+
+							win = true;
+							declareWinner(i, j);
+							return win;
+
+						}
+
+					}
 				}
 
 			}
@@ -171,6 +200,22 @@ public class ConnectFourPanel extends JPanel {
 		}
 
 		return win;
+
+	}
+
+	private boolean isDraw() {
+
+		boolean draw = false;
+
+		if (btnOne.isEnabled() == false && btnTwo.isEnabled() == false && btnThree.isEnabled() == false
+				&& btnFour.isEnabled() == false && btnFive.isEnabled() == false && btnSix.isEnabled() == false
+				&& btnSeven.isEnabled() == false) {
+
+			draw = true;
+
+		}
+
+		return draw;
 
 	}
 
@@ -237,7 +282,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[one][0]).setBackground(blue);
 					count++;
 					btnOne.setEnabled(false);
-					btnOne.setBackground(Color.BLACK);
+					btnOne.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -250,7 +295,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[one][0]).setBackground(red);
 					count++;
 					btnOne.setEnabled(false);
-					btnOne.setBackground(Color.BLACK);
+					btnOne.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -291,7 +336,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[two][1]).setBackground(blue);
 					count++;
 					btnTwo.setEnabled(false);
-					btnTwo.setBackground(Color.BLACK);
+					btnTwo.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -304,7 +349,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[two][1]).setBackground(red);
 					count++;
 					btnTwo.setEnabled(false);
-					btnTwo.setBackground(Color.BLACK);
+					btnTwo.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -345,7 +390,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[three][2]).setBackground(blue);
 					count++;
 					btnThree.setEnabled(false);
-					btnThree.setBackground(Color.BLACK);
+					btnThree.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -358,7 +403,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[three][2]).setBackground(red);
 					count++;
 					btnThree.setEnabled(false);
-					btnThree.setBackground(Color.BLACK);
+					btnThree.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -399,7 +444,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[four][3]).setBackground(blue);
 					count++;
 					btnFour.setEnabled(false);
-					btnFour.setBackground(Color.BLACK);
+					btnFour.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -412,7 +457,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[four][3]).setBackground(red);
 					count++;
 					btnFour.setEnabled(false);
-					btnFour.setBackground(Color.BLACK);
+					btnFour.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -453,7 +498,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[five][4]).setBackground(blue);
 					count++;
 					btnFive.setEnabled(false);
-					btnFive.setBackground(Color.BLACK);
+					btnFive.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -466,7 +511,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[five][4]).setBackground(red);
 					count++;
 					btnFive.setEnabled(false);
-					btnFive.setBackground(Color.BLACK);
+					btnFive.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -507,7 +552,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[six][5]).setBackground(blue);
 					count++;
 					btnSix.setEnabled(false);
-					btnSix.setBackground(Color.BLACK);
+					btnSix.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -520,7 +565,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[six][5]).setBackground(red);
 					count++;
 					btnSix.setEnabled(false);
-					btnSix.setBackground(Color.BLACK);
+					btnSix.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -561,7 +606,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[seven][6]).setBackground(blue);
 					count++;
 					btnSeven.setEnabled(false);
-					btnSeven.setBackground(Color.BLACK);
+					btnSeven.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
@@ -574,7 +619,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[seven][6]).setBackground(red);
 					count++;
 					btnSeven.setEnabled(false);
-					btnSeven.setBackground(Color.BLACK);
+					btnSeven.setBackground(Color.WHITE);
 
 					if (checkWinner()) {
 
