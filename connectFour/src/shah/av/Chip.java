@@ -3,24 +3,22 @@ package shah.av;
 import java.awt.Color;
 
 public class Chip {
+	private ChipState state;
+	
+	public Chip() {
 
-	private Color chipColor;
-
-	public Chip(Color color) {
-
-		this.chipColor = color;
-
-	}
-
-	public void setColor(Color color) {
-
-		this.chipColor = color;
+		state = ChipState.EMPTY; 
 
 	}
 
-	public Color getColor() {
+	public void setChip(ChipState player) {
+		state = player;
 
-		return chipColor;
+	}
+
+	public ChipState getState() {
+
+		return state;
 
 	}
 
