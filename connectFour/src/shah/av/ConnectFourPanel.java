@@ -13,12 +13,6 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class ConnectFourPanel extends JPanel {
 
-	final int ROWS = 7;
-	final int COLS = 7;
-
-	Chip chip1;
-	Chip chip2;
-
 	ImageIcon oneChip;
 	ImageIcon twoChip;
 
