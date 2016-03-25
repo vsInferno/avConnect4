@@ -4,16 +4,22 @@ public class Chip {
 	private ChipState state;
 
 	public Chip() {
-		state = ChipState.EMPTY;
+		this.state = ChipState.EMPTY;
+	}
+	public Chip(ChipState state) {
+		this.state = state;
 	}
 
 	public void setChip(ChipState player) {
-		state = player;
-
+		this.state = player;
 	}
 
 	public ChipState getChip() {
 		return state;
+
+	}
+	public java.lang.String toString() {
+		return "(" + state + ")";
 
 	}
 

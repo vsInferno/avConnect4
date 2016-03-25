@@ -16,6 +16,8 @@ public class ConnectFourPanel extends JPanel {
 	private static final int ROWS = 7;
 	private static final int COLS = 7;
 
+	Board board;
+	
 	int count = 0;
 	
 	ImageIcon oneChip;
@@ -23,6 +25,12 @@ public class ConnectFourPanel extends JPanel {
 
 	Chip play1;
 	Chip play2;
+	
+	int row, col;
+	
+	ChipState state;
+	
+	
 
 	int one,two,three,four,five,six,seven;
 	
@@ -53,8 +61,12 @@ public class ConnectFourPanel extends JPanel {
 
 		setLayout(new GridLayout(7, 7));
 
-		play1 = new Chip();
-		play2 = new Chip();
+		oneChip = chipIm("blue");
+		twoChip = chipIm("Red");
+		
+		board = new Board();
+		play1 = new Chip(ChipState.PLAYER1);
+		play2 = new Chip(ChipState.PLAYER2);
 
 		thickBorder = new LineBorder(Color.WHITE, 4);
 
@@ -156,7 +168,12 @@ public class ConnectFourPanel extends JPanel {
 		}
 	}
 	
-	public void updateBoard() {
+	
+	
+	public int getCurrentIndex(){
+		int row;
+	}
+/*	public void updateBoard() {
 
 		btnOne.setEnabled(false);
 		btnOne.setBackground(Color.WHITE);
@@ -185,10 +202,9 @@ public class ConnectFourPanel extends JPanel {
 		btnSeven.setText("D");
 		btnSeven.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 
-	}
+	}*/
 
 	private class ButtonListener implements ActionListener {
-		int x = 6; int y = 0;
 		
 		public void actionPerformed(ActionEvent event) {
 
@@ -607,6 +623,8 @@ public class ConnectFourPanel extends JPanel {
 			  }
 			  playTwo = playerOneTurn();
 			  }
+			  
+			  board.updateBoard(row, col , state);
 			  
 			  }
 			 
