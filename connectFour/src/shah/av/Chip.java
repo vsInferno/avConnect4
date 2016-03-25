@@ -1,14 +1,10 @@
 package shah.av;
 
-import java.awt.Color;
-
 public class Chip {
 	private ChipState state;
-	
+
 	public Chip() {
-
-		state = ChipState.EMPTY; 
-
+		state = ChipState.EMPTY;
 	}
 
 	public void setChip(ChipState player) {
@@ -16,8 +12,7 @@ public class Chip {
 
 	}
 
-	public ChipState getState() {
-
+	public ChipState getChip() {
 		return state;
 
 	}

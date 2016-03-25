@@ -6,8 +6,6 @@ public class AIPanel extends JPanel {
 
 	public AIPanel() {
 
-		ghjjfh
-		
 	}
 
 }
