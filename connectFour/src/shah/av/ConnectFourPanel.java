@@ -35,11 +35,6 @@ public class ConnectFourPanel extends JPanel {
 	int one,two,three,four,five,six,seven;
 	
 	boolean playTwo = false;
-	
-	private Color blue = Color.BLUE;
-	private Color red = Color.RED;
-	private Color pink = Color.pink;
-	private Color cyan = Color.cyan;
 
 	private JButton[][] button = new JButton[ROWS][COLS];
 
@@ -60,9 +55,6 @@ public class ConnectFourPanel extends JPanel {
 		setBackground(Color.YELLOW);
 
 		setLayout(new GridLayout(7, 7));
-
-		oneChip = chipIm("blue");
-		twoChip = chipIm("Red");
 		
 		board = new Board();
 		play1 = new Chip(ChipState.PLAYER1);
@@ -129,16 +121,6 @@ public class ConnectFourPanel extends JPanel {
 	
 	}
 
-	
-
-	private ImageIcon chipIm(String color) {
-
-		ImageIcon chipImg = new ImageIcon(color + ".png");
-
-		return chipImg;
-
-	}
-
 	/*/
 	  private void declareWinner(int i, int j) {
 	  
@@ -170,9 +152,10 @@ public class ConnectFourPanel extends JPanel {
 	
 	
 	
-	public int getCurrentIndex(){
+	/*public int getCurrentIndex(){
 		int row;
-	}
+	}*/
+	
 /*	public void updateBoard() {
 
 		btnOne.setEnabled(false);
