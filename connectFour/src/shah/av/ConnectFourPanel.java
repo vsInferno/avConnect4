@@ -25,6 +25,7 @@ public class ConnectFourPanel extends JPanel {
 
 	ChipState winner;
 
+
 	int one, two, three, four, five, six, seven;
 
 	private JButton[][] button = new JButton[ROWS][COLS];
