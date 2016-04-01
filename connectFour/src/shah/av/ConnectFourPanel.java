@@ -25,20 +25,15 @@ public class ConnectFourPanel extends JPanel {
 
 	ChipState winner;
 
-
-	int one, two, three, four, five, six, seven;
+	int[] emptySpace = new int[7];
 
 	private JButton[][] button = new JButton[ROWS][COLS];
 
-	JButton btnOne;
-	JButton btnTwo;
-	JButton btnThree;
-	JButton btnFour;
-	JButton btnFive;
-	JButton btnSix;
-	JButton btnSeven;
+	private JButton[] btnChoice = new JButton[7];
 
 	Border thickBorder;
+
+	String name1, name2;
 
 	public ConnectFourPanel() {
 
@@ -80,42 +75,78 @@ public class ConnectFourPanel extends JPanel {
 
 		}
 
-		one = ROWS - 1;
-		two = ROWS - 1;
-		three = ROWS - 1;
-		four = ROWS - 1;
-		five = ROWS - 1;
-		six = ROWS - 1;
-		seven = ROWS - 1;
-		count = 0;
+		emptySpace[0] = ROWS - 1;
+		emptySpace[1] = ROWS - 1;
+		emptySpace[2] = ROWS - 1;
+		emptySpace[3] = ROWS - 1;
+		emptySpace[4] = ROWS - 1;
+		emptySpace[5] = ROWS - 1;
+		emptySpace[6] = ROWS - 1;
+		count = 1;
 
-		btnOne = button[0][0];
-		btnOne.setBackground(Color.BLACK);
-		btnOne.setBorder(thickBorder);
+		btnChoice[0] = button[0][0];
+		btnChoice[0].setBackground(Color.BLACK);
+		btnChoice[0].setBorder(thickBorder);
 
-		btnTwo = button[0][1];
-		btnTwo.setBackground(Color.BLACK);
-		btnTwo.setBorder(thickBorder);
+		btnChoice[1] = button[0][1];
+		btnChoice[1].setBackground(Color.BLACK);
+		btnChoice[1].setBorder(thickBorder);
 
-		btnThree = button[0][2];
-		btnThree.setBackground(Color.BLACK);
-		btnThree.setBorder(thickBorder);
+		btnChoice[2] = button[0][2];
+		btnChoice[2].setBackground(Color.BLACK);
+		btnChoice[2].setBorder(thickBorder);
 
-		btnFour = button[0][3];
-		btnFour.setBackground(Color.BLACK);
-		btnFour.setBorder(thickBorder);
+		btnChoice[3] = button[0][3];
+		btnChoice[3].setBackground(Color.BLACK);
+		btnChoice[3].setBorder(thickBorder);
 
-		btnFive = button[0][4];
-		btnFive.setBackground(Color.BLACK);
-		btnFive.setBorder(thickBorder);
+		btnChoice[4] = button[0][4];
+		btnChoice[4].setBackground(Color.BLACK);
+		btnChoice[4].setBorder(thickBorder);
 
-		btnSix = button[0][5];
-		btnSix.setBackground(Color.BLACK);
-		btnSix.setBorder(thickBorder);
+		btnChoice[5] = button[0][5];
+		btnChoice[5].setBackground(Color.BLACK);
+		btnChoice[5].setBorder(thickBorder);
 
-		btnSeven = button[0][6];
-		btnSeven.setBackground(Color.BLACK);
-		btnSeven.setBorder(thickBorder);
+		btnChoice[6] = button[0][6];
+		btnChoice[6].setBackground(Color.BLACK);
+		btnChoice[6].setBorder(thickBorder);
+
+		boolean valid = true;
+
+		while (valid) {
+
+			name1 = JOptionPane.showInputDialog(null, "Name of Player 1: ");
+			if (name1 == null || name1.equals("")) {
+
+				JOptionPane.showMessageDialog(null, "No name entered.");
+
+			} else {
+
+				JOptionPane.showMessageDialog(null, name1 + " will be pink. Pink goes first.");
+				valid = false;
+
+			}
+
+		}
+
+		valid = true;
+
+		while (valid) {
+
+			name2 = JOptionPane.showInputDialog(null, "Name of Player 2: ");
+			if (name2 == null || name2.equals("")) {
+
+				JOptionPane.showMessageDialog(null, "No name entered.");
+
+			} else {
+
+				JOptionPane.showMessageDialog(null, name2 + " will be cyan. Cyan goes second.");
+				valid = false;
+
+			}
+
+		}
 
 	}
 
@@ -145,32 +176,39 @@ public class ConnectFourPanel extends JPanel {
 
 	public void endPanel() {
 
-		btnOne.setEnabled(false);
-		btnOne.setBackground(Color.WHITE);
-		btnOne.setText("T");
-		btnOne.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
-		btnTwo.setEnabled(false);
-		btnTwo.setBackground(Color.WHITE);
-		btnTwo.setText("H");
-		btnTwo.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
-		btnThree.setEnabled(false);
-		btnThree.setBackground(Color.WHITE);
-		btnThree.setText("E");
-		btnThree.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
-		btnFour.setEnabled(false);
-		btnFour.setBackground(Color.WHITE);
-		btnFive.setEnabled(false);
-		btnFive.setBackground(Color.WHITE);
-		btnFive.setText("E");
-		btnFive.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
-		btnSix.setEnabled(false);
-		btnSix.setBackground(Color.WHITE);
-		btnSix.setText("N");
-		btnSix.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
-		btnSeven.setEnabled(false);
-		btnSeven.setBackground(Color.WHITE);
-		btnSeven.setText("D");
-		btnSeven.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+		btnChoice[0].setEnabled(false);
+		btnChoice[0].setBackground(Color.WHITE);
+		btnChoice[0].setText("T");
+		btnChoice[0].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+		btnChoice[1].setEnabled(false);
+		btnChoice[1].setBackground(Color.WHITE);
+		btnChoice[1].setText("H");
+		btnChoice[1].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+		btnChoice[2].setEnabled(false);
+		btnChoice[2].setBackground(Color.WHITE);
+		btnChoice[2].setText("E");
+		btnChoice[2].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+		btnChoice[3].setEnabled(false);
+		btnChoice[3].setBackground(Color.WHITE);
+		btnChoice[4].setEnabled(false);
+		btnChoice[4].setBackground(Color.WHITE);
+		btnChoice[4].setText("E");
+		btnChoice[4].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+		btnChoice[5].setEnabled(false);
+		btnChoice[5].setBackground(Color.WHITE);
+		btnChoice[5].setText("N");
+		btnChoice[5].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+		btnChoice[6].setEnabled(false);
+		btnChoice[6].setBackground(Color.WHITE);
+		btnChoice[6].setText("D");
+		btnChoice[6].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+
+		int result = JOptionPane.showConfirmDialog(null, "Do you wish to play again?");
+		if (result == JOptionPane.YES_OPTION) {
+
+			new SelectionPanel();
+
+		}
 
 	}
 
@@ -178,326 +216,340 @@ public class ConnectFourPanel extends JPanel {
 
 		public void actionPerformed(ActionEvent event) {
 
-			if (event.getSource() == btnOne && one != 0) {
+			if (event.getSource() == btnChoice[0] && emptySpace[0] != 0) {
 
-				if (!playerTwoTurn() && one > 1) {
+				if (!playerTwoTurn() && emptySpace[0] > 1) {
 
-					(button[one][0]).setBackground(Color.pink);
-					(button[one][0]).setDisabledIcon(oneChip);
-					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
-					board.updateBoard(one, 0, ChipState.PLAYER1);
-					one--;
+					(button[emptySpace[0]][0]).setBackground(Color.pink);
+					(button[emptySpace[0]][0]).setDisabledIcon(oneChip);
+					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
+					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
+					emptySpace[0]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && one > 1) {
+				} else if (playerTwoTurn() && emptySpace[0] > 1) {
 
-					(button[one][0]).setBackground(Color.cyan);
-					(button[one][0]).setDisabledIcon(twoChip);
-					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
-					board.updateBoard(one, 0, ChipState.PLAYER2);
-					one--;
+					(button[emptySpace[0]][0]).setBackground(Color.cyan);
+					(button[emptySpace[0]][0]).setDisabledIcon(twoChip);
+					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
+					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER2);
+					emptySpace[0]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && one == 1) {
+				} else if (!playerTwoTurn() && emptySpace[0] == 1) {
 
-					(button[one][0]).setBackground(Color.pink);
-					(button[one][0]).setDisabledIcon(oneChip);
-					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
+					(button[emptySpace[0]][0]).setBackground(Color.pink);
+					(button[emptySpace[0]][0]).setDisabledIcon(oneChip);
+					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
+					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
 					count++;
-					btnOne.setEnabled(false);
+					btnChoice[0].setEnabled(false);
 					board.updateBoard(0, 0, ChipState.FULL);
-					btnOne.setBackground(Color.WHITE);
+					btnChoice[0].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && one == 1) {
+				} else if (playerTwoTurn() && emptySpace[0] == 1) {
 
-					(button[one][0]).setBackground(Color.cyan);
-					(button[one][0]).setDisabledIcon(twoChip);
-					(button[one][0]).setIcon((button[one][0]).getDisabledIcon());
+					(button[emptySpace[0]][0]).setBackground(Color.cyan);
+					(button[emptySpace[0]][0]).setDisabledIcon(twoChip);
+					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
+					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER2);
 					count++;
-					btnOne.setEnabled(false);
+					btnChoice[0].setEnabled(false);
 					board.updateBoard(0, 0, ChipState.FULL);
-					btnOne.setBackground(Color.WHITE);
+					btnChoice[0].setBackground(Color.WHITE);
 					isOver();
 
 				}
 
 			}
 
-			else if (event.getSource() == btnTwo && two != 0) {
+			else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
 
-				if (!playerTwoTurn() && two > 1) {
+				if (!playerTwoTurn() && emptySpace[1] > 1) {
 
-					(button[two][1]).setBackground(Color.pink);
-					(button[two][1]).setDisabledIcon(oneChip);
-					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
-					board.updateBoard(two, 1, ChipState.PLAYER1);
-					two--;
+					(button[emptySpace[1]][1]).setBackground(Color.pink);
+					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
+					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
+					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER1);
+					emptySpace[1]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && two > 1) {
+				} else if (playerTwoTurn() && emptySpace[1] > 1) {
 
-					(button[two][1]).setBackground(Color.cyan);
-					(button[two][1]).setDisabledIcon(twoChip);
-					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
-					board.updateBoard(two, 1, ChipState.PLAYER2);
-					two--;
+					(button[emptySpace[1]][1]).setBackground(Color.cyan);
+					(button[emptySpace[1]][1]).setDisabledIcon(twoChip);
+					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
+					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER2);
+					emptySpace[1]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && two == 1) {
+				} else if (!playerTwoTurn() && emptySpace[1] == 1) {
 
-					(button[two][1]).setBackground(Color.pink);
-					(button[two][1]).setDisabledIcon(oneChip);
-					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
+					(button[emptySpace[1]][1]).setBackground(Color.pink);
+					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
+					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
+					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER1);
 					count++;
-					btnTwo.setEnabled(false);
+					btnChoice[1].setEnabled(false);
 					board.updateBoard(0, 1, ChipState.FULL);
-					btnTwo.setBackground(Color.WHITE);
+					btnChoice[1].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && two == 1) {
+				} else if (playerTwoTurn() && emptySpace[1] == 1) {
 
-					(button[two][1]).setBackground(Color.cyan);
-					(button[two][1]).setDisabledIcon(twoChip);
-					(button[two][1]).setIcon((button[two][1]).getDisabledIcon());
+					(button[emptySpace[1]][1]).setBackground(Color.cyan);
+					(button[emptySpace[1]][1]).setDisabledIcon(twoChip);
+					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
+					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER2);
 					count++;
-					btnTwo.setEnabled(false);
+					btnChoice[1].setEnabled(false);
 					board.updateBoard(0, 1, ChipState.FULL);
-					btnTwo.setBackground(Color.WHITE);
+					btnChoice[1].setBackground(Color.WHITE);
 					isOver();
 
 				}
 
-			} else if (event.getSource() == btnThree && three != 0) {
+			} else if (event.getSource() == btnChoice[2] && emptySpace[2] != 0) {
 
-				if (!playerTwoTurn() && three > 1) {
+				if (!playerTwoTurn() && emptySpace[2] > 1) {
 
-					(button[three][2]).setBackground(Color.pink);
-					(button[three][2]).setDisabledIcon(oneChip);
-					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
-					board.updateBoard(three, 2, ChipState.PLAYER1);
-					three--;
+					(button[emptySpace[2]][2]).setBackground(Color.pink);
+					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
+					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
+					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER1);
+					emptySpace[2]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && three > 1) {
+				} else if (playerTwoTurn() && emptySpace[2] > 1) {
 
-					(button[three][2]).setBackground(Color.cyan);
-					(button[three][2]).setDisabledIcon(twoChip);
-					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
-					board.updateBoard(three, 2, ChipState.PLAYER2);
-					three--;
+					(button[emptySpace[2]][2]).setBackground(Color.cyan);
+					(button[emptySpace[2]][2]).setDisabledIcon(twoChip);
+					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
+					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER2);
+					emptySpace[2]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && three == 1) {
+				} else if (!playerTwoTurn() && emptySpace[2] == 1) {
 
-					(button[three][2]).setBackground(Color.pink);
-					(button[three][2]).setDisabledIcon(oneChip);
-					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
+					(button[emptySpace[2]][2]).setBackground(Color.pink);
+					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
+					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
+					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER1);
 					count++;
-					btnThree.setEnabled(false);
+					btnChoice[2].setEnabled(false);
 					board.updateBoard(0, 2, ChipState.FULL);
-					btnThree.setBackground(Color.WHITE);
+					btnChoice[2].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && three == 1) {
+				} else if (playerTwoTurn() && emptySpace[2] == 1) {
 
-					(button[three][2]).setBackground(Color.cyan);
-					(button[three][2]).setDisabledIcon(twoChip);
-					(button[three][2]).setIcon((button[three][2]).getDisabledIcon());
+					(button[emptySpace[2]][2]).setBackground(Color.cyan);
+					(button[emptySpace[2]][2]).setDisabledIcon(twoChip);
+					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
+					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER2);
 					count++;
-					btnThree.setEnabled(false);
+					btnChoice[2].setEnabled(false);
 					board.updateBoard(0, 2, ChipState.FULL);
-					btnThree.setBackground(Color.WHITE);
+					btnChoice[2].setBackground(Color.WHITE);
 					isOver();
 
 				}
 
-			} else if (event.getSource() == btnFour && four != 0) {
+			} else if (event.getSource() == btnChoice[3] && emptySpace[3] != 0) {
 
-				if (!playerTwoTurn() && four > 1) {
+				if (!playerTwoTurn() && emptySpace[3] > 1) {
 
-					(button[four][3]).setBackground(Color.pink);
-					(button[four][3]).setDisabledIcon(oneChip);
-					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
-					board.updateBoard(four, 3, ChipState.PLAYER1);
-					four--;
+					(button[emptySpace[3]][3]).setBackground(Color.pink);
+					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
+					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
+					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER1);
+					emptySpace[3]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && four > 1) {
+				} else if (playerTwoTurn() && emptySpace[3] > 1) {
 
-					(button[four][3]).setBackground(Color.cyan);
-					(button[four][3]).setDisabledIcon(twoChip);
-					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
-					board.updateBoard(four, 3, ChipState.PLAYER2);
-					four--;
+					(button[emptySpace[3]][3]).setBackground(Color.cyan);
+					(button[emptySpace[3]][3]).setDisabledIcon(twoChip);
+					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
+					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER2);
+					emptySpace[3]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && four == 1) {
+				} else if (!playerTwoTurn() && emptySpace[3] == 1) {
 
-					(button[four][3]).setBackground(Color.pink);
-					(button[four][3]).setDisabledIcon(oneChip);
-					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
+					(button[emptySpace[3]][3]).setBackground(Color.pink);
+					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
+					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
+					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER1);
 					count++;
-					btnFour.setEnabled(false);
+					btnChoice[3].setEnabled(false);
 					board.updateBoard(0, 3, ChipState.FULL);
-					btnFour.setBackground(Color.WHITE);
+					btnChoice[3].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && four == 1) {
+				} else if (playerTwoTurn() && emptySpace[3] == 1) {
 
-					(button[four][3]).setBackground(Color.cyan);
-					(button[four][3]).setDisabledIcon(twoChip);
-					(button[four][3]).setIcon((button[four][3]).getDisabledIcon());
+					(button[emptySpace[3]][3]).setBackground(Color.cyan);
+					(button[emptySpace[3]][3]).setDisabledIcon(twoChip);
+					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
+					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER2);
 					count++;
-					btnFour.setEnabled(false);
+					btnChoice[3].setEnabled(false);
 					board.updateBoard(0, 3, ChipState.FULL);
-					btnFour.setBackground(Color.WHITE);
+					btnChoice[3].setBackground(Color.WHITE);
 					isOver();
 
 				}
 
-			} else if (event.getSource() == btnFive && five != 0) {
+			} else if (event.getSource() == btnChoice[4] && emptySpace[4] != 0) {
 
-				if (!playerTwoTurn() && five > 1) {
+				if (!playerTwoTurn() && emptySpace[4] > 1) {
 
-					(button[five][4]).setBackground(Color.pink);
-					(button[five][4]).setDisabledIcon(oneChip);
-					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
-					board.updateBoard(five, 4, ChipState.PLAYER1);
-					five--;
+					(button[emptySpace[4]][4]).setBackground(Color.pink);
+					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
+					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
+					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER1);
+					emptySpace[4]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && five > 1) {
+				} else if (playerTwoTurn() && emptySpace[4] > 1) {
 
-					(button[five][4]).setBackground(Color.cyan);
-					(button[five][4]).setDisabledIcon(twoChip);
-					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
-					board.updateBoard(five, 4, ChipState.PLAYER2);
-					five--;
+					(button[emptySpace[4]][4]).setBackground(Color.cyan);
+					(button[emptySpace[4]][4]).setDisabledIcon(twoChip);
+					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
+					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER2);
+					emptySpace[4]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && five == 1) {
+				} else if (!playerTwoTurn() && emptySpace[4] == 1) {
 
-					(button[five][4]).setBackground(Color.pink);
-					(button[five][4]).setDisabledIcon(oneChip);
-					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
+					(button[emptySpace[4]][4]).setBackground(Color.pink);
+					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
+					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
+					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER1);
 					count++;
-					btnFive.setEnabled(false);
+					btnChoice[4].setEnabled(false);
 					board.updateBoard(0, 4, ChipState.FULL);
-					btnFive.setBackground(Color.WHITE);
+					btnChoice[4].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && five == 1) {
+				} else if (playerTwoTurn() && emptySpace[4] == 1) {
 
-					(button[five][4]).setBackground(Color.cyan);
-					(button[five][4]).setDisabledIcon(twoChip);
-					(button[five][4]).setIcon((button[five][4]).getDisabledIcon());
+					(button[emptySpace[4]][4]).setBackground(Color.cyan);
+					(button[emptySpace[4]][4]).setDisabledIcon(twoChip);
+					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
+					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER2);
 					count++;
-					btnFive.setEnabled(false);
+					btnChoice[4].setEnabled(false);
 					board.updateBoard(0, 4, ChipState.FULL);
-					btnFive.setBackground(Color.WHITE);
+					btnChoice[4].setBackground(Color.WHITE);
 					isOver();
 
 				}
 
-			} else if (event.getSource() == btnSix && six != 0) {
+			} else if (event.getSource() == btnChoice[5] && emptySpace[5] != 0) {
 
-				if (!playerTwoTurn() && six > 1) {
+				if (!playerTwoTurn() && emptySpace[5] > 1) {
 
-					(button[six][5]).setBackground(Color.pink);
-					(button[six][5]).setDisabledIcon(oneChip);
-					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
-					board.updateBoard(six, 5, ChipState.PLAYER1);
-					six--;
+					(button[emptySpace[5]][5]).setBackground(Color.pink);
+					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
+					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
+					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER1);
+					emptySpace[5]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && six > 1) {
+				} else if (playerTwoTurn() && emptySpace[5] > 1) {
 
-					(button[six][5]).setBackground(Color.cyan);
-					(button[six][5]).setDisabledIcon(twoChip);
-					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
-					board.updateBoard(six, 5, ChipState.PLAYER2);
-					six--;
+					(button[emptySpace[5]][5]).setBackground(Color.cyan);
+					(button[emptySpace[5]][5]).setDisabledIcon(twoChip);
+					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
+					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER2);
+					emptySpace[5]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && six == 1) {
+				} else if (!playerTwoTurn() && emptySpace[5] == 1) {
 
-					(button[six][5]).setBackground(Color.pink);
-					(button[six][5]).setDisabledIcon(oneChip);
-					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
+					(button[emptySpace[5]][5]).setBackground(Color.pink);
+					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
+					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
+					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER1);
 					count++;
-					btnSix.setEnabled(false);
+					btnChoice[5].setEnabled(false);
 					board.updateBoard(0, 5, ChipState.FULL);
-					btnSix.setBackground(Color.WHITE);
+					btnChoice[5].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && six == 1) {
+				} else if (playerTwoTurn() && emptySpace[5] == 1) {
 
-					(button[six][5]).setBackground(Color.cyan);
-					(button[six][5]).setDisabledIcon(twoChip);
-					(button[six][5]).setIcon((button[six][5]).getDisabledIcon());
+					(button[emptySpace[5]][5]).setBackground(Color.cyan);
+					(button[emptySpace[5]][5]).setDisabledIcon(twoChip);
+					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
+					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER2);
 					count++;
-					btnSix.setEnabled(false);
+					btnChoice[5].setEnabled(false);
 					board.updateBoard(0, 5, ChipState.FULL);
-					btnSix.setBackground(Color.WHITE);
+					btnChoice[5].setBackground(Color.WHITE);
 					isOver();
 
 				}
 
-			} else if (event.getSource() == btnSeven && seven != 0) {
+			} else if (event.getSource() == btnChoice[6] && emptySpace[6] != 0) {
 
-				if (!playerTwoTurn() && seven > 1) {
+				if (!playerTwoTurn() && emptySpace[6] > 1) {
 
-					(button[seven][6]).setBackground(Color.pink);
-					(button[seven][6]).setDisabledIcon(oneChip);
-					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
-					board.updateBoard(seven, 6, ChipState.PLAYER1);
-					seven--;
+					(button[emptySpace[6]][6]).setBackground(Color.pink);
+					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
+					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
+					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER1);
+					emptySpace[6]--;
 					count++;
 					isOver();
 
-				} else if (playerTwoTurn() && seven > 1) {
+				} else if (playerTwoTurn() && emptySpace[6] > 1) {
 
-					(button[seven][6]).setBackground(Color.cyan);
-					(button[seven][6]).setDisabledIcon(twoChip);
-					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
-					board.updateBoard(seven, 6, ChipState.PLAYER2);
-					seven--;
+					(button[emptySpace[6]][6]).setBackground(Color.cyan);
+					(button[emptySpace[6]][6]).setDisabledIcon(twoChip);
+					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
+					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER2);
+					emptySpace[6]--;
 					count++;
 					isOver();
 
-				} else if (!playerTwoTurn() && seven == 1) {
+				} else if (!playerTwoTurn() && emptySpace[6] == 1) {
 
-					(button[seven][6]).setBackground(Color.pink);
-					(button[seven][6]).setDisabledIcon(oneChip);
-					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
+					(button[emptySpace[6]][6]).setBackground(Color.pink);
+					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
+					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
+					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER1);
 					count++;
-					btnSeven.setEnabled(false);
+					btnChoice[6].setEnabled(false);
 					board.updateBoard(0, 6, ChipState.FULL);
-					btnSeven.setBackground(Color.WHITE);
+					btnChoice[6].setBackground(Color.WHITE);
 					isOver();
 
-				} else if (playerTwoTurn() && seven == 1) {
+				} else if (playerTwoTurn() && emptySpace[6] == 1) {
 
-					(button[seven][6]).setBackground(Color.cyan);
-					(button[seven][6]).setDisabledIcon(twoChip);
-					(button[seven][6]).setIcon((button[seven][6]).getDisabledIcon());
+					(button[emptySpace[6]][6]).setBackground(Color.cyan);
+					(button[emptySpace[6]][6]).setDisabledIcon(twoChip);
+					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
+					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER2);
 					count++;
-					btnSeven.setEnabled(false);
+					btnChoice[6].setEnabled(false);
 					board.updateBoard(0, 6, ChipState.FULL);
-					btnSeven.setBackground(Color.WHITE);
+					btnChoice[6].setBackground(Color.WHITE);
 					isOver();
 
 				}
@@ -518,8 +570,17 @@ public class ConnectFourPanel extends JPanel {
 				winner = board.whoWin();
 				if (winner != ChipState.EMPTY) {
 
-					JOptionPane.showMessageDialog(null, winner + " wins!");
-					endPanel();
+					if (winner == ChipState.PLAYER1) {
+
+						JOptionPane.showMessageDialog(null, name1 + " wins!");
+						endPanel();
+
+					} else {
+
+						JOptionPane.showMessageDialog(null, name2 + " wins!");
+						endPanel();
+
+					}
 
 				}
 

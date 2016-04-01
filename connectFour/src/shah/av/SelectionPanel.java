@@ -10,10 +10,10 @@ public class SelectionPanel extends JPanel {
 		Object options[] = { "Single Player", "Multiplayer", "Cancel" };
 
 		int selection = 2;
-		
+
 		while (selection == 2) {
 
-			selection = JOptionPane.showOptionDialog(null, "Welcome! How would you like to play?", "CONNECT FOUR",
+			selection = JOptionPane.showOptionDialog(null, "How would you like to play?", "CONNECT FOUR",
 					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[2]);
 
 		}
@@ -29,7 +29,7 @@ public class SelectionPanel extends JPanel {
 			optionFrame.setResizable(false);
 			optionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		} else {
+		} else if (selection == 1) {
 
 			JFrame optionFrame = new JFrame("Connect Four");
 			optionFrame.getContentPane().add(new ConnectFourPanel());
