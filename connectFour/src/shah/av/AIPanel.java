@@ -195,6 +195,8 @@ public class AIPanel extends JPanel {
 					} else {
 
 						isOver();
+						ai();
+						isOver();
 
 					}
 
@@ -216,6 +218,8 @@ public class AIPanel extends JPanel {
 
 					} else {
 
+						isOver();
+						ai();
 						isOver();
 
 					}
@@ -239,6 +243,8 @@ public class AIPanel extends JPanel {
 					} else {
 
 						isOver();
+						ai();
+						isOver();
 
 					}
 
@@ -260,6 +266,8 @@ public class AIPanel extends JPanel {
 
 					} else {
 
+						isOver();
+						ai();
 						isOver();
 
 					}
@@ -283,6 +291,8 @@ public class AIPanel extends JPanel {
 					} else {
 
 						isOver();
+						ai();
+						isOver();
 
 					}
 
@@ -304,6 +314,8 @@ public class AIPanel extends JPanel {
 
 					} else {
 
+						isOver();
+						ai();
 						isOver();
 
 					}
@@ -327,6 +339,8 @@ public class AIPanel extends JPanel {
 					} else {
 
 						isOver();
+						ai();
+						isOver();
 
 					}
 
@@ -336,15 +350,28 @@ public class AIPanel extends JPanel {
 
 		}
 
+		private void ai() {
+			
+			int location[] = new int[2];
+			location = board.aiMove(emptySpace);
+			(button[emptySpace[location[0]]][location[1]]).setBackground(Color.cyan);
+			(button[emptySpace[location[0]]][location[1]]).setDisabledIcon(twoChip);
+			(button[emptySpace[location[0]]][location[1]]).setIcon((button[emptySpace[location[0]]][location[1]]).getDisabledIcon());
+			board.updateBoard(emptySpace[location[0]], location[1], ChipState.PLAYER2);
+			emptySpace[location[0]]--;
+			count++;
+			
+		}
+
 		private void aiFirst() {
 
 			int column = (int) (Math.random() * btnChoice.length);
-
-			System.out.println(column);
 			(button[emptySpace[column]][column]).setBackground(Color.cyan);
 			(button[emptySpace[column]][column]).setDisabledIcon(twoChip);
 			(button[emptySpace[column]][column]).setIcon((button[emptySpace[column]][column]).getDisabledIcon());
-			board.updateBoard(emptySpace[column], 0, ChipState.PLAYER2);
+			board.updateBoard(emptySpace[column], column, ChipState.PLAYER2);
+			emptySpace[column]--;
+			count++;
 
 		}
 

@@ -17,6 +17,35 @@ public class Board {
 		}
 
 	}
+	
+	public int[] aiMove(int[] emptySpace) {
+		
+		int[] location = new int[2];
+		
+		for (int i = 0; i < 7; i++) {
+
+			for (int j = 0; j < 7; j++) {
+
+				if ((emptySpace[j] > 3) && (chip[i][j].getChip() == ChipState.PLAYER2)){
+					
+					location[0] = i;
+					location[1] = j;
+					
+				} else {
+					
+					int column = (int) (Math.random() * emptySpace.length);
+					location[0] = emptySpace[column];
+					location[1] = column;
+					
+				}
+
+			}
+
+		}
+		
+		return location;
+
+	}
 
 	public void updateBoard(int row, int col, ChipState player) {
 
