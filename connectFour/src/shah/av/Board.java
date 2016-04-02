@@ -3,7 +3,9 @@ package shah.av;
 public class Board {
 
 	private Chip[][] chip = new Chip[7][7];
-
+	private int xValue, yValue;
+   // private String coordinates;
+	
 	public Board() {
 
 		for (int row = 0; row < 7; row++) {
@@ -50,6 +52,20 @@ public class Board {
 	public void updateBoard(int row, int col, ChipState player) {
 
 		chip[row][col].setChip(player);
+
+	}
+	
+	
+	public void setCoordinates(int row, int col){
+		 this.xValue = row;
+		 this.yValue = col;
+	}
+
+	public String getCoordinates(){
+
+		 String coordinates = (String.valueOf(xValue) + "," +  String.valueOf(yValue));
+		 
+		 return coordinates;
 
 	}
 

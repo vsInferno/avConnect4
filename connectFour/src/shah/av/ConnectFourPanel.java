@@ -75,13 +75,11 @@ public class ConnectFourPanel extends JPanel {
 
 		}
 
-		emptySpace[0] = ROWS - 1;
-		emptySpace[1] = ROWS - 1;
-		emptySpace[2] = ROWS - 1;
-		emptySpace[3] = ROWS - 1;
-		emptySpace[4] = ROWS - 1;
-		emptySpace[5] = ROWS - 1;
-		emptySpace[6] = ROWS - 1;
+
+		for(int i = 0; i < emptySpace.length; i++){
+			emptySpace[i] =  ROWS - 1;
+		}
+		
 		count = 1;
 
 		btnChoice[0] = button[0][0];
