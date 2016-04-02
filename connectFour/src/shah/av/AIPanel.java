@@ -192,7 +192,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[0]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[0] == 1) {
 
@@ -205,11 +204,14 @@ public class AIPanel extends JPanel {
 					btnChoice[0].setEnabled(false);
 					board.updateBoard(0, 0, ChipState.FULL);
 					btnChoice[0].setBackground(Color.WHITE);
-					isOver();
 
 				}
 
-				ai();
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			} else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
 				int col = 1;
@@ -224,7 +226,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[1]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[1] == 1) {
 
@@ -237,11 +238,14 @@ public class AIPanel extends JPanel {
 					btnChoice[1].setEnabled(false);
 					board.updateBoard(0, 1, ChipState.FULL);
 					btnChoice[1].setBackground(Color.WHITE);
-					isOver();
 
 				}
-				
-				ai();
+
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			} else if (event.getSource() == btnChoice[2] && emptySpace[2] != 0) {
 				int col = 2;
@@ -256,7 +260,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[2]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[2] == 1) {
 
@@ -269,11 +272,14 @@ public class AIPanel extends JPanel {
 					btnChoice[2].setEnabled(false);
 					board.updateBoard(0, 2, ChipState.FULL);
 					btnChoice[2].setBackground(Color.WHITE);
-					isOver();
 
 				}
-				
-				ai();
+
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			} else if (event.getSource() == btnChoice[3] && emptySpace[3] != 0) {
 				int col = 3;
@@ -288,7 +294,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[3]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[3] == 1) {
 
@@ -301,11 +306,14 @@ public class AIPanel extends JPanel {
 					btnChoice[3].setEnabled(false);
 					board.updateBoard(0, 3, ChipState.FULL);
 					btnChoice[3].setBackground(Color.WHITE);
-					isOver();
 
 				}
-				
-				ai();
+
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			} else if (event.getSource() == btnChoice[4] && emptySpace[4] != 0) {
 				int col = 4;
@@ -320,7 +328,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[4]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[4] == 1) {
 
@@ -333,11 +340,14 @@ public class AIPanel extends JPanel {
 					btnChoice[4].setEnabled(false);
 					board.updateBoard(0, 4, ChipState.FULL);
 					btnChoice[4].setBackground(Color.WHITE);
-					isOver();
 
 				}
 
-				ai();
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			} else if (event.getSource() == btnChoice[5] && emptySpace[5] != 0) {
 				int col = 5;
@@ -352,7 +362,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[5]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[5] == 1) {
 
@@ -365,11 +374,14 @@ public class AIPanel extends JPanel {
 					btnChoice[5].setEnabled(false);
 					board.updateBoard(0, 5, ChipState.FULL);
 					btnChoice[5].setBackground(Color.WHITE);
-					isOver();
 
 				}
 
-				ai();
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			} else if (event.getSource() == btnChoice[6] && emptySpace[6] != 0) {
 				int col = 6;
@@ -384,7 +396,6 @@ public class AIPanel extends JPanel {
 					updatePlaceArray(coordinates);
 					emptySpace[6]--;
 					count++;
-					isOver();
 
 				} else if (!computerTurn() && emptySpace[6] == 1) {
 
@@ -397,11 +408,14 @@ public class AIPanel extends JPanel {
 					btnChoice[6].setEnabled(false);
 					board.updateBoard(0, 6, ChipState.FULL);
 					btnChoice[6].setBackground(Color.WHITE);
-					isOver();
 
 				}
 
-				ai();
+				if (!isOver()) {
+
+					ai();
+
+				}
 
 			}
 
@@ -447,12 +461,13 @@ public class AIPanel extends JPanel {
 
 		}
 
-		private void isOver() {
+		private boolean isOver() {
 
 			if (board.isDraw()) {
 
 				JOptionPane.showMessageDialog(null, "It's a draw!");
 				endPanel();
+				return true;
 
 			} else {
 
@@ -471,9 +486,13 @@ public class AIPanel extends JPanel {
 
 					}
 
+					return true;
+
 				}
 
 			}
+
+			return false;
 
 		}
 
