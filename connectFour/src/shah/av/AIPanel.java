@@ -396,7 +396,7 @@ public class AIPanel extends JPanel {
 
 		}
 
-		private void ai() {
+		public void ai() {
 
 			int[] location = new int[2];
 			location = board.aiMove(emptySpace);
