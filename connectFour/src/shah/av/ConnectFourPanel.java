@@ -13,27 +13,27 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class ConnectFourPanel extends JPanel {
 
-	private static final int ROWS = 7;
-	private static final int COLS = 7;
+	private final int ROWS = 7;
+	private final int COLS = 7;
 
-	Board board;
+	private Board board;
 
-	int count = 0;
+	private int count = 0;
 
-	ImageIcon oneChip;
-	ImageIcon twoChip;
+	private ImageIcon oneChip;
+	private ImageIcon twoChip;
 
-	ChipState winner;
+	private ChipState winner;
 
-	int[] emptySpace = new int[7];
+	private int[] emptySpace = new int[7];
 
 	private JButton[][] button = new JButton[ROWS][COLS];
 
 	private JButton[] btnChoice = new JButton[7];
 
-	Border thickBorder;
+	private Border thickBorder;
 
-	String name1, name2;
+	private String name1, name2;
 
 	public ConnectFourPanel() {
 
@@ -75,11 +75,10 @@ public class ConnectFourPanel extends JPanel {
 
 		}
 
-
-		for(int i = 0; i < emptySpace.length; i++){
-			emptySpace[i] =  ROWS - 1;
+		for (int i = 0; i < emptySpace.length; i++) {
+			emptySpace[i] = ROWS - 1;
 		}
-		
+
 		count = 1;
 
 		btnChoice[0] = button[0][0];
@@ -148,7 +147,7 @@ public class ConnectFourPanel extends JPanel {
 
 	}
 
-	private ImageIcon chipIm(String color) {
+	public ImageIcon chipIm(String color) {
 
 		ImageIcon chipImg = new ImageIcon(color + ".png");
 
@@ -242,6 +241,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[0]][0]).setDisabledIcon(oneChip);
 					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
 					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
+					emptySpace[0]--;
 					count++;
 					btnChoice[0].setEnabled(false);
 					board.updateBoard(0, 0, ChipState.FULL);
@@ -254,6 +254,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[0]][0]).setDisabledIcon(twoChip);
 					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
 					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER2);
+					emptySpace[0]--;
 					count++;
 					btnChoice[0].setEnabled(false);
 					board.updateBoard(0, 0, ChipState.FULL);
@@ -262,9 +263,7 @@ public class ConnectFourPanel extends JPanel {
 
 				}
 
-			}
-
-			else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
+			} else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
 
 				if (!playerTwoTurn() && emptySpace[1] > 1) {
 
@@ -292,6 +291,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
 					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
 					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER1);
+					emptySpace[1]--;
 					count++;
 					btnChoice[1].setEnabled(false);
 					board.updateBoard(0, 1, ChipState.FULL);
@@ -304,6 +304,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[1]][1]).setDisabledIcon(twoChip);
 					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
 					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER2);
+					emptySpace[1]--;
 					count++;
 					btnChoice[1].setEnabled(false);
 					board.updateBoard(0, 1, ChipState.FULL);
@@ -340,6 +341,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
 					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
 					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER1);
+					emptySpace[2]--;
 					count++;
 					btnChoice[2].setEnabled(false);
 					board.updateBoard(0, 2, ChipState.FULL);
@@ -352,6 +354,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[2]][2]).setDisabledIcon(twoChip);
 					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
 					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER2);
+					emptySpace[2]--;
 					count++;
 					btnChoice[2].setEnabled(false);
 					board.updateBoard(0, 2, ChipState.FULL);
@@ -388,6 +391,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
 					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
 					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER1);
+					emptySpace[3]--;
 					count++;
 					btnChoice[3].setEnabled(false);
 					board.updateBoard(0, 3, ChipState.FULL);
@@ -400,6 +404,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[3]][3]).setDisabledIcon(twoChip);
 					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
 					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER2);
+					emptySpace[3]--;
 					count++;
 					btnChoice[3].setEnabled(false);
 					board.updateBoard(0, 3, ChipState.FULL);
@@ -436,6 +441,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
 					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
 					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER1);
+					emptySpace[4]--;
 					count++;
 					btnChoice[4].setEnabled(false);
 					board.updateBoard(0, 4, ChipState.FULL);
@@ -448,6 +454,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[4]][4]).setDisabledIcon(twoChip);
 					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
 					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER2);
+					emptySpace[4]--;
 					count++;
 					btnChoice[4].setEnabled(false);
 					board.updateBoard(0, 4, ChipState.FULL);
@@ -484,6 +491,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
 					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
 					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER1);
+					emptySpace[5]--;
 					count++;
 					btnChoice[5].setEnabled(false);
 					board.updateBoard(0, 5, ChipState.FULL);
@@ -496,6 +504,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[5]][5]).setDisabledIcon(twoChip);
 					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
 					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER2);
+					emptySpace[5]--;
 					count++;
 					btnChoice[5].setEnabled(false);
 					board.updateBoard(0, 5, ChipState.FULL);
@@ -532,6 +541,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
 					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
 					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER1);
+					emptySpace[6]--;
 					count++;
 					btnChoice[6].setEnabled(false);
 					board.updateBoard(0, 6, ChipState.FULL);
@@ -544,6 +554,7 @@ public class ConnectFourPanel extends JPanel {
 					(button[emptySpace[6]][6]).setDisabledIcon(twoChip);
 					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
 					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER2);
+					emptySpace[6]--;
 					count++;
 					btnChoice[6].setEnabled(false);
 					board.updateBoard(0, 6, ChipState.FULL);

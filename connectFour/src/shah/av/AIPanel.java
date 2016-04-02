@@ -13,28 +13,25 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class AIPanel extends JPanel {
 
-	private static final int ROWS = 7;
-	private static final int COLS = 7;
+	private final int ROWS = 7;
+	private final int COLS = 7;
 
-	Board board;
+	private Board board;
 
-	int count = 0;
+	private int count = 0;
 
-	ImageIcon oneChip;
-	ImageIcon twoChip;
+	private ImageIcon oneChip;
+	private ImageIcon twoChip;
 
-	ChipState winner;
-	String coordinates = " ";
+	private ChipState winner;
 
-	int[] emptySpace = new int[7];
-
-	private boolean[][] chipPlaced = new boolean[ROWS][COLS];
+	private int[] emptySpace = new int[7];
 
 	private JButton[][] button = new JButton[ROWS][COLS];
 
 	private JButton[] btnChoice = new JButton[7];
 
-	Border thickBorder;
+	private Border thickBorder;
 
 	public AIPanel() {
 
@@ -69,7 +66,6 @@ public class AIPanel extends JPanel {
 					button[i][j].setBackground(Color.YELLOW);
 					button[i][j].setBorder(thickBorder);
 					add(button[i][j]);
-					chipPlaced[i][j] = false;
 
 				}
 
@@ -180,16 +176,13 @@ public class AIPanel extends JPanel {
 		public void actionPerformed(ActionEvent event) {
 
 			if (event.getSource() == btnChoice[0] && emptySpace[0] != 0) {
-				int col = 0;
+
 				if (!computerTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
 					(button[emptySpace[0]][0]).setDisabledIcon(oneChip);
 					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
 					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[0], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[0]--;
 					count++;
 
@@ -214,16 +207,13 @@ public class AIPanel extends JPanel {
 				}
 
 			} else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
-				int col = 1;
+
 				if (!computerTurn() && emptySpace[1] > 2) {
 
 					(button[emptySpace[1]][1]).setBackground(Color.pink);
 					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
 					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
 					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[1], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[1]--;
 					count++;
 
@@ -248,16 +238,13 @@ public class AIPanel extends JPanel {
 				}
 
 			} else if (event.getSource() == btnChoice[2] && emptySpace[2] != 0) {
-				int col = 2;
+
 				if (!computerTurn() && emptySpace[2] > 2) {
 
 					(button[emptySpace[2]][2]).setBackground(Color.pink);
 					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
 					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
 					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[2], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[2]--;
 					count++;
 
@@ -282,16 +269,13 @@ public class AIPanel extends JPanel {
 				}
 
 			} else if (event.getSource() == btnChoice[3] && emptySpace[3] != 0) {
-				int col = 3;
+
 				if (!computerTurn() && emptySpace[3] > 2) {
 
 					(button[emptySpace[3]][3]).setBackground(Color.pink);
 					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
 					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
 					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[3], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[3]--;
 					count++;
 
@@ -316,16 +300,13 @@ public class AIPanel extends JPanel {
 				}
 
 			} else if (event.getSource() == btnChoice[4] && emptySpace[4] != 0) {
-				int col = 4;
+
 				if (!computerTurn() && emptySpace[4] > 2) {
 
 					(button[emptySpace[4]][4]).setBackground(Color.pink);
 					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
 					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
 					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[4], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[4]--;
 					count++;
 
@@ -350,16 +331,13 @@ public class AIPanel extends JPanel {
 				}
 
 			} else if (event.getSource() == btnChoice[5] && emptySpace[5] != 0) {
-				int col = 5;
+
 				if (!computerTurn() && emptySpace[5] > 2) {
 
 					(button[emptySpace[5]][5]).setBackground(Color.pink);
 					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
 					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
 					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[5], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[5]--;
 					count++;
 
@@ -384,16 +362,13 @@ public class AIPanel extends JPanel {
 				}
 
 			} else if (event.getSource() == btnChoice[6] && emptySpace[6] != 0) {
-				int col = 6;
+
 				if (!computerTurn() && emptySpace[6] > 2) {
 
 					(button[emptySpace[6]][6]).setBackground(Color.pink);
 					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
 					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
 					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[6], col);
-					coordinates = board.getCoordinates();
-					updatePlaceArray(coordinates);
 					emptySpace[6]--;
 					count++;
 
@@ -447,17 +422,8 @@ public class AIPanel extends JPanel {
 				btnChoice[location[1]].setBackground(Color.WHITE);
 
 			}
+
 			isOver();
-
-		}
-
-		private void updatePlaceArray(String coordinates) {
-			int row = Integer.valueOf(coordinates.substring(0, coordinates.indexOf(",")));
-			int col = Integer.valueOf(coordinates.substring(coordinates.indexOf(",") + 1));
-
-			chipPlaced[row][col] = true;
-
-			System.out.println(coordinates);
 
 		}
 

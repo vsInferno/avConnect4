@@ -3,8 +3,7 @@ package shah.av;
 public class Board {
 
 	private Chip[][] chip = new Chip[7][7];
-	private int xValue, yValue;
-	
+
 	public Board() {
 
 		for (int row = 0; row < 7; row++) {
@@ -18,31 +17,31 @@ public class Board {
 		}
 
 	}
-	
+
 	public int[] aiMove(int[] emptySpace) {
-		
+
 		int[] location = new int[2];
-		
+
 		for (int i = 0; i < 7; i++) {
 
 			for (int j = 0; j < 7; j++) {
 
-				if ((emptySpace[j] >= 3) && (chip[i][j].getChip() == ChipState.PLAYER2)){
-					
+				if ((emptySpace[j] >= 3) && (chip[i][j].getChip() == ChipState.PLAYER2)) {
+
 					location[0] = i - 1;
 					location[1] = j;
 					return location;
-					
-				} 
+
+				}
 
 			}
 
 		}
-			
+
 		int column = (int) (Math.random() * emptySpace.length);
 		location[0] = emptySpace[column];
 		location[1] = column;
-		
+
 		return location;
 
 	}
@@ -50,21 +49,6 @@ public class Board {
 	public void updateBoard(int row, int col, ChipState player) {
 
 		chip[row][col].setChip(player);
-
-	}
-	
-	
-	public void setCoordinates(int row, int col) {
-		
-		 this.xValue = row;
-		 this.yValue = col;
-		 
-	}
-
-	public String getCoordinates(){
-
-		 String coordinates = (String.valueOf(xValue) + "," +  String.valueOf(yValue));
-		 return coordinates;
 
 	}
 
