@@ -4,7 +4,6 @@ public class Board {
 
 	private Chip[][] chip = new Chip[7][7];
 	private int xValue, yValue;
-   // private String coordinates;
 	
 	public Board() {
 
@@ -28,22 +27,21 @@ public class Board {
 
 			for (int j = 0; j < 7; j++) {
 
-				if ((emptySpace[j] > 3) && (chip[i][j].getChip() == ChipState.PLAYER2)){
+				if ((emptySpace[j] >= 3) && (chip[i][j].getChip() == ChipState.PLAYER2)){
 					
-					location[0] = i;
+					location[0] = i - 1;
 					location[1] = j;
+					return location;
 					
-				} else {
-					
-					int column = (int) (Math.random() * emptySpace.length);
-					location[0] = emptySpace[column];
-					location[1] = column;
-					
-				}
+				} 
 
 			}
 
 		}
+			
+		int column = (int) (Math.random() * emptySpace.length);
+		location[0] = emptySpace[column];
+		location[1] = column;
 		
 		return location;
 
@@ -56,15 +54,16 @@ public class Board {
 	}
 	
 	
-	public void setCoordinates(int row, int col){
+	public void setCoordinates(int row, int col) {
+		
 		 this.xValue = row;
 		 this.yValue = col;
+		 
 	}
 
 	public String getCoordinates(){
 
 		 String coordinates = (String.valueOf(xValue) + "," +  String.valueOf(yValue));
-		 
 		 return coordinates;
 
 	}

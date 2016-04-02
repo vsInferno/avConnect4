@@ -29,7 +29,7 @@ public class AIPanel extends JPanel {
 	int[] emptySpace = new int[7];
 
 	private boolean[][] chipPlaced = new boolean[ROWS][COLS];
-	
+
 	private JButton[][] button = new JButton[ROWS][COLS];
 
 	private JButton[] btnChoice = new JButton[7];
@@ -76,9 +76,9 @@ public class AIPanel extends JPanel {
 			}
 
 		}
-		
-		for(int i = 0; i < emptySpace.length; i++){
-			emptySpace[i] =  ROWS - 1;
+
+		for (int i = 0; i < emptySpace.length; i++) {
+			emptySpace[i] = ROWS - 1;
 		}
 
 		count = 1;
@@ -187,228 +187,266 @@ public class AIPanel extends JPanel {
 					(button[emptySpace[0]][0]).setDisabledIcon(oneChip);
 					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
 					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[0],  col);
+					board.setCoordinates(emptySpace[0], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[0]--;
 					count++;
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[0] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[0]][0]).setBackground(Color.pink);
+					(button[emptySpace[0]][0]).setDisabledIcon(oneChip);
+					(button[emptySpace[0]][0]).setIcon((button[emptySpace[0]][0]).getDisabledIcon());
+					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
+					emptySpace[0]--;
+					count++;
+					btnChoice[0].setEnabled(false);
+					board.updateBoard(0, 0, ChipState.FULL);
+					btnChoice[0].setBackground(Color.WHITE);
+					isOver();
 
 				}
 
+				ai();
+
 			} else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
 				int col = 1;
-				if (!computerTurn() && emptySpace[1] > 1) {
+				if (!computerTurn() && emptySpace[1] > 2) {
 
 					(button[emptySpace[1]][1]).setBackground(Color.pink);
 					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
 					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
 					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[1],  col);
+					board.setCoordinates(emptySpace[1], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[1]--;
 					count++;
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[1] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[1]][1]).setBackground(Color.pink);
+					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
+					(button[emptySpace[1]][1]).setIcon((button[emptySpace[1]][1]).getDisabledIcon());
+					board.updateBoard(emptySpace[1], 1, ChipState.PLAYER1);
+					emptySpace[1]--;
+					count++;
+					btnChoice[1].setEnabled(false);
+					board.updateBoard(0, 1, ChipState.FULL);
+					btnChoice[1].setBackground(Color.WHITE);
+					isOver();
 
 				}
+				
+				ai();
 
 			} else if (event.getSource() == btnChoice[2] && emptySpace[2] != 0) {
 				int col = 2;
-				if (!computerTurn() && emptySpace[2] > 1) {
+				if (!computerTurn() && emptySpace[2] > 2) {
 
 					(button[emptySpace[2]][2]).setBackground(Color.pink);
 					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
 					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
 					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[2],  col);
+					board.setCoordinates(emptySpace[2], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[2]--;
 					count++;
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[2] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[2]][2]).setBackground(Color.pink);
+					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
+					(button[emptySpace[2]][2]).setIcon((button[emptySpace[2]][2]).getDisabledIcon());
+					board.updateBoard(emptySpace[2], 2, ChipState.PLAYER1);
+					emptySpace[2]--;
+					count++;
+					btnChoice[2].setEnabled(false);
+					board.updateBoard(0, 2, ChipState.FULL);
+					btnChoice[2].setBackground(Color.WHITE);
+					isOver();
 
 				}
+				
+				ai();
 
 			} else if (event.getSource() == btnChoice[3] && emptySpace[3] != 0) {
 				int col = 3;
-				if (!computerTurn() && emptySpace[3] > 1) {
+				if (!computerTurn() && emptySpace[3] > 2) {
 
 					(button[emptySpace[3]][3]).setBackground(Color.pink);
 					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
 					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
 					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[3],  col);
+					board.setCoordinates(emptySpace[3], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[3]--;
 					count++;
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[3] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[3]][3]).setBackground(Color.pink);
+					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
+					(button[emptySpace[3]][3]).setIcon((button[emptySpace[3]][3]).getDisabledIcon());
+					board.updateBoard(emptySpace[3], 3, ChipState.PLAYER1);
+					emptySpace[3]--;
+					count++;
+					btnChoice[3].setEnabled(false);
+					board.updateBoard(0, 3, ChipState.FULL);
+					btnChoice[3].setBackground(Color.WHITE);
+					isOver();
 
 				}
+				
+				ai();
 
 			} else if (event.getSource() == btnChoice[4] && emptySpace[4] != 0) {
-				int col=4;
-				if (!computerTurn() && emptySpace[4] > 1) {
+				int col = 4;
+				if (!computerTurn() && emptySpace[4] > 2) {
 
 					(button[emptySpace[4]][4]).setBackground(Color.pink);
 					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
 					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
 					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[4],  col);
+					board.setCoordinates(emptySpace[4], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[4]--;
 					count++;
-					
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[4] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[4]][4]).setBackground(Color.pink);
+					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
+					(button[emptySpace[4]][4]).setIcon((button[emptySpace[4]][4]).getDisabledIcon());
+					board.updateBoard(emptySpace[4], 4, ChipState.PLAYER1);
+					emptySpace[4]--;
+					count++;
+					btnChoice[4].setEnabled(false);
+					board.updateBoard(0, 4, ChipState.FULL);
+					btnChoice[4].setBackground(Color.WHITE);
+					isOver();
 
 				}
 
+				ai();
+
 			} else if (event.getSource() == btnChoice[5] && emptySpace[5] != 0) {
-				int col  = 5;
-				if (!computerTurn() && emptySpace[5] > 1) {
+				int col = 5;
+				if (!computerTurn() && emptySpace[5] > 2) {
 
 					(button[emptySpace[5]][5]).setBackground(Color.pink);
 					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
 					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
 					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[5],  col);
+					board.setCoordinates(emptySpace[5], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[5]--;
 					count++;
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[5] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[5]][5]).setBackground(Color.pink);
+					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
+					(button[emptySpace[5]][5]).setIcon((button[emptySpace[5]][5]).getDisabledIcon());
+					board.updateBoard(emptySpace[5], 5, ChipState.PLAYER1);
+					emptySpace[5]--;
+					count++;
+					btnChoice[5].setEnabled(false);
+					board.updateBoard(0, 5, ChipState.FULL);
+					btnChoice[5].setBackground(Color.WHITE);
+					isOver();
 
 				}
 
+				ai();
+
 			} else if (event.getSource() == btnChoice[6] && emptySpace[6] != 0) {
 				int col = 6;
-				if (!computerTurn() && emptySpace[6] > 1) {
+				if (!computerTurn() && emptySpace[6] > 2) {
 
 					(button[emptySpace[6]][6]).setBackground(Color.pink);
 					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
 					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
 					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER1);
-					board.setCoordinates(emptySpace[6],  col);
+					board.setCoordinates(emptySpace[6], col);
 					coordinates = board.getCoordinates();
 					updatePlaceArray(coordinates);
 					emptySpace[6]--;
 					count++;
-					if (count == 2) {
+					isOver();
 
-						aiFirst();
+				} else if (!computerTurn() && emptySpace[6] == 1) {
 
-					} else {
-
-						isOver();
-						ai();
-						isOver();
-
-					}
+					(button[emptySpace[6]][6]).setBackground(Color.pink);
+					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
+					(button[emptySpace[6]][6]).setIcon((button[emptySpace[6]][6]).getDisabledIcon());
+					board.updateBoard(emptySpace[6], 6, ChipState.PLAYER1);
+					emptySpace[6]--;
+					count++;
+					btnChoice[6].setEnabled(false);
+					board.updateBoard(0, 6, ChipState.FULL);
+					btnChoice[6].setBackground(Color.WHITE);
+					isOver();
 
 				}
+
+				ai();
 
 			}
 
 		}
 
 		private void ai() {
-			
-			int location[] = new int[2];
+
+			int[] location = new int[2];
 			location = board.aiMove(emptySpace);
-			(button[emptySpace[location[0]]][location[1]]).setBackground(Color.cyan);
-			(button[emptySpace[location[0]]][location[1]]).setDisabledIcon(twoChip);
-			(button[emptySpace[location[0]]][location[1]]).setIcon((button[emptySpace[location[0]]][location[1]]).getDisabledIcon());
-			board.updateBoard(emptySpace[location[0]], location[1], ChipState.PLAYER2);
-			emptySpace[location[0]]--;
-			count++;
-			
+			if (emptySpace[location[1]] > 1) {
+
+				(button[location[0]][location[1]]).setBackground(Color.cyan);
+				(button[location[0]][location[1]]).setDisabledIcon(twoChip);
+				(button[location[0]][location[1]]).setIcon((button[location[0]][location[1]]).getDisabledIcon());
+				board.updateBoard(location[0], location[1], ChipState.PLAYER2);
+				emptySpace[location[1]]--;
+				count++;
+
+			} else if (emptySpace[location[1]] == 1) {
+
+				(button[location[0]][location[1]]).setBackground(Color.cyan);
+				(button[location[0]][location[1]]).setDisabledIcon(twoChip);
+				(button[location[0]][location[1]]).setIcon((button[location[0]][location[1]]).getDisabledIcon());
+				board.updateBoard(location[0], location[1], ChipState.PLAYER2);
+				emptySpace[location[1]]--;
+				count++;
+				btnChoice[location[1]].setEnabled(false);
+				board.updateBoard(0, location[1], ChipState.FULL);
+				btnChoice[location[1]].setBackground(Color.WHITE);
+
+			}
+			isOver();
+
 		}
 
-		private void aiFirst() {
+		private void updatePlaceArray(String coordinates) {
+			int row = Integer.valueOf(coordinates.substring(0, coordinates.indexOf(",")));
+			int col = Integer.valueOf(coordinates.substring(coordinates.indexOf(",") + 1));
 
-			int column = (int) (Math.random() * btnChoice.length);
-			(button[emptySpace[column]][column]).setBackground(Color.cyan);
-			(button[emptySpace[column]][column]).setDisabledIcon(twoChip);
-			(button[emptySpace[column]][column]).setIcon((button[emptySpace[column]][column]).getDisabledIcon());
-			board.updateBoard(emptySpace[column], column, ChipState.PLAYER2);
-			emptySpace[column]--;
-			count++;
-
-		}
-
-		private void updatePlaceArray(String coordinates){
-			int row = Integer.valueOf(coordinates.substring(0,coordinates.indexOf(","))); 
-			int col =   Integer.valueOf(coordinates.substring(coordinates.indexOf(",") + 1));
-			
 			chipPlaced[row][col] = true;
-			
+
 			System.out.println(coordinates);
-			
+
 		}
-		
-		
+
 		private void isOver() {
 
 			if (board.isDraw()) {
