@@ -26,7 +26,7 @@ public class Board {
 
 			for (int j = 0; j < 7; j++) {
 
-				if ((emptySpace[j] >= 3) && (chip[i][j].getChip() == ChipState.PLAYER2)) {
+				if ((emptySpace[j] >= 3) && (chip[i][j].getChip() == ChipState.PLAYER2) &&(chip[i-1][j].getChip() == ChipState.EMPTY)) {
 
 					location[0] = i - 1;
 					location[1] = j;
@@ -38,9 +38,20 @@ public class Board {
 
 		}
 
+		
 		int column = (int) (Math.random() * emptySpace.length);
+		
 		location[0] = emptySpace[column];
 		location[1] = column;
+		
+		while(chip[0][1].getChip() != ChipState.EMPTY) {
+			column = (int) (Math.random() * emptySpace.length);
+			
+			location[0] = emptySpace[column];
+			location[1] = column;
+			
+		}
+		
 
 		return location;
 
