@@ -44,7 +44,7 @@ public class Board {
 		location[0] = emptySpace[column];
 		location[1] = column;
 		
-		while(chip[0][1].getChip() != ChipState.EMPTY) {
+		while(chip[location[0]][location[1]].getChip() != ChipState.EMPTY) {
 			column = (int) (Math.random() * emptySpace.length);
 			
 			location[0] = emptySpace[column];
