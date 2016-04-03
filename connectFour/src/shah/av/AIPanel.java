@@ -208,7 +208,7 @@ public class AIPanel extends JPanel {
 
 			} else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
 
-				if (!computerTurn() && emptySpace[1] > 2) {
+				if (!computerTurn() && emptySpace[1] > 1) {
 
 					(button[emptySpace[1]][1]).setBackground(Color.pink);
 					(button[emptySpace[1]][1]).setDisabledIcon(oneChip);
@@ -239,7 +239,7 @@ public class AIPanel extends JPanel {
 
 			} else if (event.getSource() == btnChoice[2] && emptySpace[2] != 0) {
 
-				if (!computerTurn() && emptySpace[2] > 2) {
+				if (!computerTurn() && emptySpace[2] > 1) {
 
 					(button[emptySpace[2]][2]).setBackground(Color.pink);
 					(button[emptySpace[2]][2]).setDisabledIcon(oneChip);
@@ -270,7 +270,7 @@ public class AIPanel extends JPanel {
 
 			} else if (event.getSource() == btnChoice[3] && emptySpace[3] != 0) {
 
-				if (!computerTurn() && emptySpace[3] > 2) {
+				if (!computerTurn() && emptySpace[3] > 1) {
 
 					(button[emptySpace[3]][3]).setBackground(Color.pink);
 					(button[emptySpace[3]][3]).setDisabledIcon(oneChip);
@@ -301,7 +301,7 @@ public class AIPanel extends JPanel {
 
 			} else if (event.getSource() == btnChoice[4] && emptySpace[4] != 0) {
 
-				if (!computerTurn() && emptySpace[4] > 2) {
+				if (!computerTurn() && emptySpace[4] > 1) {
 
 					(button[emptySpace[4]][4]).setBackground(Color.pink);
 					(button[emptySpace[4]][4]).setDisabledIcon(oneChip);
@@ -332,7 +332,7 @@ public class AIPanel extends JPanel {
 
 			} else if (event.getSource() == btnChoice[5] && emptySpace[5] != 0) {
 
-				if (!computerTurn() && emptySpace[5] > 2) {
+				if (!computerTurn() && emptySpace[5] > 1) {
 
 					(button[emptySpace[5]][5]).setBackground(Color.pink);
 					(button[emptySpace[5]][5]).setDisabledIcon(oneChip);
@@ -363,7 +363,7 @@ public class AIPanel extends JPanel {
 
 			} else if (event.getSource() == btnChoice[6] && emptySpace[6] != 0) {
 
-				if (!computerTurn() && emptySpace[6] > 2) {
+				if (!computerTurn() && emptySpace[6] > 1) {
 
 					(button[emptySpace[6]][6]).setBackground(Color.pink);
 					(button[emptySpace[6]][6]).setDisabledIcon(oneChip);
