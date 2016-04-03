@@ -22,12 +22,6 @@ public class Chip {
 
 	}
 
-	public java.lang.String toString() {
-
-		return "(" + state + ")";
-
-	}
-
 	public boolean isFull() {
 
 		if (state == ChipState.FULL) {

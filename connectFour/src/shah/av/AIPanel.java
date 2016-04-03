@@ -400,7 +400,7 @@ public class AIPanel extends JPanel {
 
 			int[] location = new int[2];
 			location = board.aiMove(emptySpace);
-			
+
 			if (emptySpace[location[1]] > 1) {
 
 				(button[location[0]][location[1]]).setBackground(Color.cyan);
@@ -464,4 +464,5 @@ public class AIPanel extends JPanel {
 		}
 
 	}
+
 }
