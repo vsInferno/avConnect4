@@ -237,9 +237,9 @@ public class ConnectFourPanel extends JPanel {
 		 * functions that each button is responsible for.
 		 */
 		public void actionPerformed(ActionEvent event) {
-
+			//Sentinel to check if button selected is button one and if column is not full
 			if (event.getSource() == btnChoice[0] && emptySpace[0] != 0) {
-
+				//If its player 1's turn and there is more than one empty space in column one
 				if (!playerTwoTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -249,7 +249,7 @@ public class ConnectFourPanel extends JPanel {
 					emptySpace[0]--;
 					count++;
 					isOver();
-
+				//If its player 2's turn and there is more than one empty space in column one
 				} else if (playerTwoTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.cyan);
@@ -259,7 +259,7 @@ public class ConnectFourPanel extends JPanel {
 					emptySpace[0]--;
 					count++;
 					isOver();
-
+				//If its player 1's turn and there is only one empty space in column one
 				} else if (!playerTwoTurn() && emptySpace[0] == 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -272,7 +272,7 @@ public class ConnectFourPanel extends JPanel {
 					board.updateBoard(0, 0, ChipState.FULL);
 					btnChoice[0].setBackground(Color.WHITE);
 					isOver();
-
+				//If its player 2's turn and there is only one empty space in column one
 				} else if (playerTwoTurn() && emptySpace[0] == 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.cyan);
