@@ -131,7 +131,7 @@ public class AIPanel extends JPanel {
 
 	/**
 	 * Keep an ongoing track of whose turn it is to alternate between the player and computer.
-	 * @return
+	 * @return true -
 	 */
 	public boolean computerTurn() {
 		
