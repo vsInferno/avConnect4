@@ -131,7 +131,7 @@ public class AIPanel extends JPanel {
 
 	/**
 	 * Keep an ongoing track of whose turn it is to alternate between the player and computer.
-	 * @return true -
+	 * @return true - If its the computer's turn
 	 */
 	public boolean computerTurn() {
 		
@@ -184,11 +184,6 @@ public class AIPanel extends JPanel {
 
 	}
 	
-	/**
-	 * ASKKKK!
-	 * @author 333858116
-	 *
-	 */
 	private class ButtonListener implements ActionListener {
 		
 		/**
@@ -196,9 +191,10 @@ public class AIPanel extends JPanel {
 		 * functions that each button is responsible for.
 		 */
 		public void actionPerformed(ActionEvent event) {
-
+			//Sentinel to check if button selected is button one and if column is not full
 			if (event.getSource() == btnChoice[0] && emptySpace[0] != 0) {
 
+				//If its player's turn and there's more than one empty space in column one
 				if (!computerTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -207,7 +203,8 @@ public class AIPanel extends JPanel {
 					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
 					emptySpace[0]--;
 					count++;
-
+				
+				//If its player's turn and there's only one empty space in column one	
 				} else if (!computerTurn() && emptySpace[0] == 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -221,7 +218,8 @@ public class AIPanel extends JPanel {
 					btnChoice[0].setBackground(Color.WHITE);
 
 				}
-
+				
+				//If the game is not over, then, AI makes a move. 
 				if (!isOver()) {
 					ai();
 				}
@@ -405,7 +403,7 @@ public class AIPanel extends JPanel {
 		}
 
 		/**
-		 * 
+		 * Places Ai player chip after receiving the best location from the board class.
 		 */
 		public void ai() {
 

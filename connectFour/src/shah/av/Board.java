@@ -27,8 +27,9 @@ public class Board {
 	}
 
 	/**
-	 * 
-	 * @param emptySpace
+	 * If there's an empty space above the Ai chip, then, it returns that location
+	 * or else, returns a random location that has been validated.
+	 * @param emptySpace - Spaces in the column 
 	 * @return
 	 */
 	public int[] aiMove(int[] emptySpace) {
