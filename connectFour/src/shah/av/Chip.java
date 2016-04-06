@@ -47,7 +47,7 @@ public class Chip {
 
 	/**
 	 * Check for an empty and unassigned chip. 
-	 * @return
+	 * @return true -  if the chip is empty 
 	 */
 	public boolean isEmpty() {
 

@@ -439,7 +439,7 @@ public class AIPanel extends JPanel {
 
 		/**
 		 * Display the game result; who wins the game or tie game.
-		 * @return
+		 * @return 
 		 */
 		private boolean isOver() {
 

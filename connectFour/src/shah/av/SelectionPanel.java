@@ -1,10 +1,15 @@
 package shah.av;
-
+/**
+ * Contains panels for single and multiplayer game mode. 
+ */
 import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class SelectionPanel extends JPanel {
 
+	/**
+	 * Allows the user to select the game mode the user wishes to play.
+	 */
 	public SelectionPanel() {
 
 		Object options[] = { "Single Player", "Multiplayer", "Cancel" };

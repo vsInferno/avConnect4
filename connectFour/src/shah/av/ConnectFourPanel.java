@@ -170,7 +170,7 @@ public class ConnectFourPanel extends JPanel {
 
 	/**
 	 * Alternate between the player 1 and 2 by checking for player 2's turn.
-	 * @return
+	 * @return true -  if it's player two's turn
 	 */
 	public boolean playerTwoTurn() {
 
@@ -594,7 +594,6 @@ public class ConnectFourPanel extends JPanel {
 
 		/**
 		 * Display the game result; who wins the game or tie game.
-		 * @return
 		 */
 		private void isOver() {
 

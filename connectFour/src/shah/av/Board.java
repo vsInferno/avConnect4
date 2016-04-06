@@ -144,7 +144,7 @@ public class Board {
 
 	/**
 	 * Check for a tie game.
-	 * @return
+	 * @return true - if its a tie game
 	 */
 	public boolean isDraw() {
 
