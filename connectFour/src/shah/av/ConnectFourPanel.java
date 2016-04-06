@@ -1,5 +1,9 @@
 package shah.av;
-
+/**
+ * Graphics for connect four multiplayer mode.
+ * @authors Vraj Shah, Archit Shah
+ * @version 1.0
+ */
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -35,6 +39,10 @@ public class ConnectFourPanel extends JPanel {
 
 	private String name1, name2;
 
+	/**
+	 * Initialize an empty grid board of connect four with buttons
+	 * while assigning each player with a chip.
+	 */
 	public ConnectFourPanel() {
 
 		setPreferredSize(new Dimension(600, 500));
@@ -147,6 +155,11 @@ public class ConnectFourPanel extends JPanel {
 
 	}
 
+	/**
+	 * Return the image of a colored chip that is unique to each player.
+	 * @param color - Chip color
+	 * @return
+	 */
 	public ImageIcon chipIm(String color) {
 
 		ImageIcon chipImg = new ImageIcon(color + ".png");
@@ -155,6 +168,10 @@ public class ConnectFourPanel extends JPanel {
 
 	}
 
+	/**
+	 * Alternate between the player 1 and 2 by checking for player 2's turn.
+	 * @return
+	 */
 	public boolean playerTwoTurn() {
 
 		boolean playTwoTurn = true;
@@ -171,6 +188,10 @@ public class ConnectFourPanel extends JPanel {
 
 	}
 
+
+	/**
+	 * Display a game over message and start a new game if the user wises to play again.
+	 */
 	public void endPanel() {
 
 		btnChoice[0].setEnabled(false);
@@ -210,11 +231,15 @@ public class ConnectFourPanel extends JPanel {
 	}
 
 	private class ButtonListener implements ActionListener {
-
+		
+		/**
+		 * Display a player's chip in the column corresponding to the button while executing 
+		 * functions that each button is responsible for.
+		 */
 		public void actionPerformed(ActionEvent event) {
-
+			//Sentinel to check if button selected is button one and if column is not full
 			if (event.getSource() == btnChoice[0] && emptySpace[0] != 0) {
-
+				//If its player 1's turn and there is more than one empty space in column one
 				if (!playerTwoTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -224,7 +249,7 @@ public class ConnectFourPanel extends JPanel {
 					emptySpace[0]--;
 					count++;
 					isOver();
-
+				//If its player 2's turn and there is more than one empty space in column one
 				} else if (playerTwoTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.cyan);
@@ -234,7 +259,7 @@ public class ConnectFourPanel extends JPanel {
 					emptySpace[0]--;
 					count++;
 					isOver();
-
+				//If its player 1's turn and there is only one empty space in column one
 				} else if (!playerTwoTurn() && emptySpace[0] == 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -247,7 +272,7 @@ public class ConnectFourPanel extends JPanel {
 					board.updateBoard(0, 0, ChipState.FULL);
 					btnChoice[0].setBackground(Color.WHITE);
 					isOver();
-
+				//If its player 2's turn and there is only one empty space in column one
 				} else if (playerTwoTurn() && emptySpace[0] == 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.cyan);
@@ -567,6 +592,10 @@ public class ConnectFourPanel extends JPanel {
 
 		}
 
+		/**
+		 * Display the game result; who wins the game or tie game.
+		 * @return
+		 */
 		private void isOver() {
 
 			if (board.isDraw()) {

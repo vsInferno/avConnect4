@@ -1,5 +1,9 @@
 package shah.av;
-
+/**
+ * Graphics for connect four single player mode.
+ * @authors Archit Shah, Vraj Shah
+ * @version 1.0
+ */
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -33,6 +37,9 @@ public class AIPanel extends JPanel {
 
 	private Border thickBorder;
 
+	/**
+	 * Initialize an empty grid board of connect four with buttons.
+	 */
 	public AIPanel() {
 
 		setPreferredSize(new Dimension(600, 500));
@@ -108,7 +115,12 @@ public class AIPanel extends JPanel {
 		btnChoice[6].setBorder(thickBorder);
 
 	}
-
+	
+	/**
+	 * Return the image of a colored chip that is unique to each player.
+	 * @param color - Chip color
+	 * @return
+	 */
 	private ImageIcon chipIm(String color) {
 
 		ImageIcon chipImg = new ImageIcon(color + ".png");
@@ -117,22 +129,24 @@ public class AIPanel extends JPanel {
 
 	}
 
+	/**
+	 * Keep an ongoing track of whose turn it is to alternate between the player and computer.
+	 * @return true - If its the computer's turn
+	 */
 	public boolean computerTurn() {
-
+		
 		boolean compT = true;
-
+		
 		if (count % 2 == 0) {
-
 			return compT;
-
 		} else {
-
 			return compT = false;
-
 		}
-
 	}
-
+	
+	/**
+	 * Display a game over message and start a new game if the user wises to play again.
+	 */
 	public void endPanel() {
 
 		btnChoice[0].setEnabled(false);
@@ -163,20 +177,24 @@ public class AIPanel extends JPanel {
 		btnChoice[6].setFont(new Font("Comic Sans MS", Font.BOLD, 35));
 
 		int result = JOptionPane.showConfirmDialog(null, "Do you wish to play again?");
+		
 		if (result == JOptionPane.YES_OPTION) {
-
 			new SelectionPanel();
-
 		}
 
 	}
-
+	
 	private class ButtonListener implements ActionListener {
-
+		
+		/**
+		 * Display a chip in the column corresponding to the button while executing 
+		 * functions that each button is responsible for.
+		 */
 		public void actionPerformed(ActionEvent event) {
-
+			//Sentinel to check if button selected is button one and if column is not full
 			if (event.getSource() == btnChoice[0] && emptySpace[0] != 0) {
 
+				//If its player's turn and there's more than one empty space in column one
 				if (!computerTurn() && emptySpace[0] > 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -185,7 +203,8 @@ public class AIPanel extends JPanel {
 					board.updateBoard(emptySpace[0], 0, ChipState.PLAYER1);
 					emptySpace[0]--;
 					count++;
-
+				
+				//If its player's turn and there's only one empty space in column one	
 				} else if (!computerTurn() && emptySpace[0] == 1) {
 
 					(button[emptySpace[0]][0]).setBackground(Color.pink);
@@ -199,11 +218,10 @@ public class AIPanel extends JPanel {
 					btnChoice[0].setBackground(Color.WHITE);
 
 				}
-
+				
+				//If the game is not over, then, AI makes a move. 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			} else if (event.getSource() == btnChoice[1] && emptySpace[1] != 0) {
@@ -232,9 +250,7 @@ public class AIPanel extends JPanel {
 				}
 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			} else if (event.getSource() == btnChoice[2] && emptySpace[2] != 0) {
@@ -263,9 +279,7 @@ public class AIPanel extends JPanel {
 				}
 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			} else if (event.getSource() == btnChoice[3] && emptySpace[3] != 0) {
@@ -294,9 +308,7 @@ public class AIPanel extends JPanel {
 				}
 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			} else if (event.getSource() == btnChoice[4] && emptySpace[4] != 0) {
@@ -325,9 +337,7 @@ public class AIPanel extends JPanel {
 				}
 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			} else if (event.getSource() == btnChoice[5] && emptySpace[5] != 0) {
@@ -356,9 +366,7 @@ public class AIPanel extends JPanel {
 				}
 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			} else if (event.getSource() == btnChoice[6] && emptySpace[6] != 0) {
@@ -387,20 +395,21 @@ public class AIPanel extends JPanel {
 				}
 
 				if (!isOver()) {
-
 					ai();
-
 				}
 
 			}
 
 		}
 
+		/**
+		 * Places Ai player chip after receiving the best location from the board class.
+		 */
 		public void ai() {
 
 			int[] location = new int[2];
 			location = board.aiMove(emptySpace);
-			
+
 			if (emptySpace[location[1]] > 1) {
 
 				(button[location[0]][location[1]]).setBackground(Color.cyan);
@@ -428,6 +437,10 @@ public class AIPanel extends JPanel {
 
 		}
 
+		/**
+		 * Display the game result; who wins the game or tie game.
+		 * @return
+		 */
 		private boolean isOver() {
 
 			if (board.isDraw()) {
@@ -442,26 +455,21 @@ public class AIPanel extends JPanel {
 				if (winner != ChipState.EMPTY) {
 
 					if (winner == ChipState.PLAYER1) {
-
 						JOptionPane.showMessageDialog(null, "You win!");
 						endPanel();
-
 					} else {
-
 						JOptionPane.showMessageDialog(null, "You lost!");
 						endPanel();
-
 					}
 
 					return true;
-
 				}
 
 			}
 
 			return false;
-
 		}
 
 	}
+
 }
